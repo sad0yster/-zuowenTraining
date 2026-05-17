@@ -1,0 +1,26 @@
+.tab-bar {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 720px;
+  margin: 0 auto;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+}
+
+.tab-item.active {
+  color: #1a1a1a;
+  font-weight: 600;
+}

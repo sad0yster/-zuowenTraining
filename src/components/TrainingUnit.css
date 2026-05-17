@@ -1,0 +1,118 @@
+.training-unit {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 140px);
+}
+
+.tu-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tu-back {
+  padding: 4px 8px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.tu-header h3 {
+  font-size: 16px;
+}
+
+.tu-prompt {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.tu-topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tu-topic-card {
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tu-topic-card:hover {
+  border-color: #1a1a1a;
+}
+
+.tu-context-banner {
+  padding: 10px 14px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #92400e;
+  margin-bottom: 16px;
+}
+
+.tu-topic-banner {
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.tu-input {
+  flex: 1;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.8;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.tu-input:focus {
+  outline: none;
+  border-color: #1a1a1a;
+}
+
+.tu-submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.tu-submit:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.tu-feedback {
+  flex: 1;
+  padding: 16px 0;
+}
+
+.tu-done {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}

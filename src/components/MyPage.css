@@ -1,0 +1,87 @@
+.my-page h2 {
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.my-stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.my-stat {
+  text-align: center;
+}
+
+.my-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  display: block;
+}
+
+.my-stat-label {
+  font-size: 12px;
+  color: #999;
+}
+
+.my-section {
+  margin-bottom: 24px;
+}
+
+.my-section h3 {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.footprint-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.fp-label {
+  font-size: 13px;
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.fp-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.fp-bar {
+  height: 100%;
+  background: #1a1a1a;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+.fp-count {
+  font-size: 13px;
+  color: #666;
+  width: 20px;
+  text-align: right;
+}
+
+.recent-essay {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 13px;
+}
+
+.re-essay-topic {
+  color: #1a1a1a;
+}
+
+.re-essay-words {
+  color: #999;
+  flex-shrink: 0;
+}

@@ -1,0 +1,133 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+}
+
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 13px;
+  color: #999;
+}
+
+.word-warning {
+  color: #e88;
+}
+
+.editor-textarea {
+  flex: 1;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.8;
+  font-family: inherit;
+  resize: none;
+  background: #fafafa;
+}
+
+.editor-textarea:focus {
+  outline: none;
+  border-color: #1a1a1a;
+  background: #fff;
+}
+
+.help-input-area {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.help-input-area input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.help-input-area button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.editor-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  gap: 12px;
+}
+
+.ask-coach-btn {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.coach-help-panel {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin: 8px 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 240px;
+}
+
+.help-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f9f9f9;
+  font-size: 13px;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.help-collapse-btn {
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: #999;
+  cursor: pointer;
+}
+
+.help-panel-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 12px;
+}
+
+.help-empty-hint {
+  font-size: 13px;
+  color: #ccc;
+  text-align: center;
+  padding: 16px 0;
+}
