@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import type { ChatMessage, EssayRecord, ThinkingSnapshot, CompletionSummary } from '../types';
-import { sendPostWriteMessage, generateId } from '../services/aiService';
+import { sendPostWriteMessage, generateId, parseScores } from '../services/aiService';
 import { saveEssay } from '../services/storageService';
 import { ChatBubble } from './ChatBubble';
 import { LoadingDots } from './LoadingDots';
+import './PostWriteReview.css';
 
 interface PostWriteReviewProps {
   topic: string;
@@ -13,6 +14,10 @@ interface PostWriteReviewProps {
   messages: ChatMessage[];
   onMessagesUpdate: (messages: ChatMessage[]) => void;
   onComplete: (snapshot: ThinkingSnapshot, summary: CompletionSummary) => void;
+}
+
+function stripScoreMarker(content: string): string {
+  return content.replace(/\n?\[SCORES:originality=\d,reasoning=\d,perspective=\d,structure=\d,language=\d\]\s*$/, '').trim();
 }
 
 export function PostWriteReview({
@@ -103,7 +108,7 @@ export function PostWriteReview({
   };
 
   const handleFinish = () => {
-    const snapshot: ThinkingSnapshot = {
+    const DEFAULT_SNAPSHOT: ThinkingSnapshot = {
       originality: 3,
       reasoning: 3,
       perspective: 3,
@@ -112,12 +117,14 @@ export function PostWriteReview({
     };
 
     const lastCoachMsg = [...messages].reverse().find((m) => m.role === 'coach');
+    const snapshot = (lastCoachMsg ? parseScores(lastCoachMsg.content) : null) || DEFAULT_SNAPSHOT;
+    const lastCoachContent = lastCoachMsg ? stripScoreMarker(lastCoachMsg.content) : '';
     const summary: CompletionSummary = {
       wordCount: essayContent.replace(/\s/g, '').length,
       preWriteRounds: preWriteMessages.filter((m) => m.role === 'user').length,
       postWriteRounds: messages.filter((m) => m.role === 'user').length,
       coachTakeaway:
-        lastCoachMsg?.content?.split('\n').pop()?.slice(0, 120) ||
+        lastCoachContent.split('\n').pop()?.slice(0, 120) ||
         '本次训练完成，继续保持思考的习惯。',
     };
 
@@ -143,7 +150,10 @@ export function PostWriteReview({
 
       <div className="chat-messages">
         {messages.map((msg) => (
-          <ChatBubble key={msg.id} message={msg} />
+          <ChatBubble
+            key={msg.id}
+            message={msg.role === 'coach' ? { ...msg, content: stripScoreMarker(msg.content) } : msg}
+          />
         ))}
         {loading && <LoadingDots />}
         <div ref={bottomRef} />
