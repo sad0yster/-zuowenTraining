@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import type { WritingStep, ChatMessage, ThinkingSnapshot, CompletionSummary } from '../types';
 import { TopicInput } from './TopicInput';
 import { PreWriteChat } from './PreWriteChat';
 import { Editor } from './Editor';
 import { PostWriteReview } from './PostWriteReview';
+import { saveDraft, loadDraft, clearDraft } from '../services/storageService';
 
 export function WritingDesk() {
   const [step, setStep] = useState<WritingStep>('topic-input');
@@ -13,6 +14,55 @@ export function WritingDesk() {
   const [content, setContent] = useState('');
   const [postWriteMessages, setPostWriteMessages] = useState<ChatMessage[]>([]);
   const [summary, setSummary] = useState<CompletionSummary | null>(null);
+  const [preWriteSummary, setPreWriteSummary] = useState('');
+  const [restored, setRestored] = useState(false);
+  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Restore draft on mount
+  useEffect(() => {
+    const draft = loadDraft();
+    if (draft) {
+      setStep(draft.step);
+      setTopic(draft.topic);
+      setQuestionId(draft.questionId);
+      setPreWriteMessages(draft.preWriteMessages);
+      setContent(draft.content);
+      setPostWriteMessages(draft.postWriteMessages);
+      setPreWriteSummary(draft.preWriteSummary);
+    }
+    setRestored(true);
+  }, []);
+
+  // Debounced save whenever relevant state changes
+  const debouncedSave = useCallback(() => {
+    if (debounceTimer.current) {
+      clearTimeout(debounceTimer.current);
+    }
+    debounceTimer.current = setTimeout(() => {
+      // Don't save on topic-input (nothing meaningful) or completed
+      if (step === 'topic-input' || step === 'completed') return;
+      saveDraft({
+        step,
+        topic,
+        questionId,
+        preWriteMessages,
+        content,
+        postWriteMessages,
+        preWriteSummary,
+        savedAt: Date.now(),
+      });
+    }, 1000);
+  }, [step, topic, questionId, preWriteMessages, content, postWriteMessages, preWriteSummary]);
+
+  useEffect(() => {
+    if (!restored) return;
+    debouncedSave();
+    return () => {
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
+      }
+    };
+  }, [restored, debouncedSave]);
 
   const handleTopicConfirm = (t: string, qId: string | null) => {
     setTopic(t);
@@ -23,6 +73,7 @@ export function WritingDesk() {
   const handleComplete = (_snapshot: ThinkingSnapshot, s: CompletionSummary) => {
     setSummary(s);
     setStep('completed');
+    clearDraft();
   };
 
   const handleStartNew = () => {
@@ -33,6 +84,8 @@ export function WritingDesk() {
     setContent('');
     setPostWriteMessages([]);
     setSummary(null);
+    setPreWriteSummary('');
+    clearDraft();
   };
 
   if (step === 'topic-input') {
@@ -45,7 +98,10 @@ export function WritingDesk() {
         topic={topic}
         messages={preWriteMessages}
         onMessagesUpdate={setPreWriteMessages}
-        onStartWriting={() => setStep('writing')}
+        onStartWriting={(s: string) => {
+          setPreWriteSummary(s);
+          setStep('writing');
+        }}
       />
     );
   }
@@ -57,6 +113,7 @@ export function WritingDesk() {
         content={content}
         onContentChange={setContent}
         onSubmit={() => setStep('post-write')}
+        preWriteSummary={preWriteSummary}
       />
     );
   }

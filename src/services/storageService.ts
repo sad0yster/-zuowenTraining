@@ -1,7 +1,8 @@
-import type { EssayRecord, DrillRecord } from '../types';
+import type { EssayRecord, DrillRecordV2, WritingStep, ChatMessage } from '../types';
 
 const ESSAY_KEY = 'zuowen-training-essays';
 const DRILL_KEY = 'zuowen-training-drills';
+const DRAFT_KEY = 'zuowen-training-draft';
 
 // Essay storage
 export function saveEssay(essay: EssayRecord): void {
@@ -29,17 +30,56 @@ export function deleteEssay(id: string): void {
 }
 
 // Drill storage
-export function saveDrillRecord(record: DrillRecord): void {
+export function saveDrillRecord(record: DrillRecordV2): void {
   const existing = loadDrillRecords();
   existing.push(record);
   localStorage.setItem(DRILL_KEY, JSON.stringify(existing));
 }
 
-export function loadDrillRecords(): DrillRecord[] {
+export function loadDrillRecords(): DrillRecordV2[] {
   try {
     const raw = localStorage.getItem(DRILL_KEY);
-    return raw ? JSON.parse(raw) : [];
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    // Filter out old-format records that don't have the new fields
+    return parsed.filter((r: Record<string, unknown>) => 'coachingMessages' in r);
   } catch {
     return [];
   }
+}
+
+// Draft storage
+export interface WritingDraft {
+  step: WritingStep;
+  topic: string;
+  questionId: string | null;
+  preWriteMessages: ChatMessage[];
+  content: string;
+  postWriteMessages: ChatMessage[];
+  preWriteSummary: string;
+  savedAt: number;
+}
+
+export function saveDraft(draft: WritingDraft): void {
+  localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+}
+
+export function loadDraft(): WritingDraft | null {
+  try {
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as WritingDraft;
+    // Don't restore completed sessions
+    if (parsed.step === 'completed') {
+      localStorage.removeItem(DRAFT_KEY);
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+export function clearDraft(): void {
+  localStorage.removeItem(DRAFT_KEY);
 }
