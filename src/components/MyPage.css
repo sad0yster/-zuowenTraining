@@ -1,5 +1,7 @@
 .my-page h2 {
-  font-size: 18px;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
   margin-bottom: 24px;
 }
 
@@ -16,12 +18,13 @@
 .my-stat-value {
   font-size: 28px;
   font-weight: 700;
+  letter-spacing: -0.02em;
   display: block;
 }
 
 .my-stat-label {
   font-size: 12px;
-  color: #999;
+  color: var(--color-muted);
 }
 
 .my-section {
@@ -29,9 +32,12 @@
 }
 
 .my-section h3 {
-  font-size: 14px;
-  color: #999;
+  font-size: 11px;
+  color: var(--color-body);
   margin-bottom: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .footprint-row {
@@ -50,38 +56,232 @@
 .fp-bar-wrap {
   flex: 1;
   height: 6px;
-  background: #f0f0f0;
+  background: var(--color-bg-warm);
   border-radius: 3px;
   overflow: hidden;
 }
 
 .fp-bar {
   height: 100%;
-  background: #1a1a1a;
+  background: var(--color-accent);
   border-radius: 3px;
   transition: width 0.3s;
 }
 
 .fp-count {
   font-size: 13px;
-  color: #666;
+  color: var(--color-body);
   width: 20px;
   text-align: right;
+}
+
+/* === 能力雷达 === */
+
+.radar-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.radar-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.radar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.rl-label {
+  color: var(--color-muted);
+  width: 32px;
+}
+
+.rl-value {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* === 周趋势 === */
+
+.weekly-chart {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  height: 100px;
+  padding-top: 8px;
+}
+
+.weekly-bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.weekly-bar-wrap {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.weekly-bar {
+  width: 60%;
+  max-width: 32px;
+  background: var(--color-accent);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  min-height: 2px;
+  transition: height 0.3s;
+}
+
+.weekly-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-heading);
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+.weekly-label {
+  font-size: 11px;
+  color: var(--color-muted);
+  margin-top: 2px;
 }
 
 .recent-essay {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--color-bg-neutral);
   font-size: 13px;
 }
 
 .re-essay-topic {
-  color: #1a1a1a;
+  color: var(--color-primary);
 }
 
 .re-essay-words {
-  color: #999;
+  color: var(--color-muted);
   flex-shrink: 0;
+}
+
+/* === 作文详情页 === */
+
+.detail-topic {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding: 12px;
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-md);
+}
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-muted);
+  margin-bottom: 10px;
+  padding: 6px 0;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.detail-section-title:hover {
+  color: var(--color-primary);
+}
+
+.detail-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-msg {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.detail-msg-role {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-muted);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.detail-msg-user .detail-msg-role {
+  color: var(--color-primary);
+}
+
+.detail-msg-text {
+  color: var(--color-secondary);
+}
+
+.detail-msg-user .detail-msg-text {
+  color: var(--color-primary);
+}
+
+.detail-essay-content {
+  margin-bottom: 8px;
+}
+
+.detail-para {
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 8px;
+  text-indent: 2em;
+}
+
+.detail-word-count {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* === 趋势箭头 === */
+.trend-up {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-left: 4px;
+}
+
+.trend-down {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-warning);
+  margin-left: 4px;
+}
+
+/* === 周总结卡片 === */
+.weekly-summary-card {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--color-border);
+}
+
+.weekly-summary-text {
+  font-size: 14px;
+  color: var(--color-body);
+  line-height: 1.5;
 }

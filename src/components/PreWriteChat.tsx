@@ -1,14 +1,15 @@
 import { useState, useRef, useEffect } from 'react';
 import type { ChatMessage } from '../types';
-import { sendPreWriteMessage, generateId } from '../services/aiService';
+import { sendPreWriteMessage, sendPreWriteSummary, generateId } from '../services/aiService';
 import { ChatBubble } from './ChatBubble';
 import { LoadingDots } from './LoadingDots';
+import './PreWriteChat.css';
 
 interface PreWriteChatProps {
   topic: string;
   messages: ChatMessage[];
   onMessagesUpdate: (messages: ChatMessage[]) => void;
-  onStartWriting: () => void;
+  onStartWriting: (summary: string) => void;
 }
 
 export function PreWriteChat({
@@ -19,6 +20,8 @@ export function PreWriteChat({
 }: PreWriteChatProps) {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [coachReady, setCoachReady] = useState(false);
+  const [summaryLoading, setSummaryLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const sentFirstRef = useRef(false);
 
@@ -62,11 +65,12 @@ export function PreWriteChat({
     setLoading(true);
 
     try {
-      const reply = await sendPreWriteMessage(topic, messages, trimmed);
+      const { message, ready } = await sendPreWriteMessage(topic, messages, trimmed);
+      if (ready) setCoachReady(true);
       const coachMsg: ChatMessage = {
         id: generateId(),
         role: 'coach',
-        content: reply,
+        content: message,
         timestamp: Date.now(),
       };
       onMessagesUpdate([...newHistory, coachMsg]);
@@ -90,6 +94,16 @@ export function PreWriteChat({
     }
   };
 
+  const handleStartWriting = async () => {
+    setSummaryLoading(true);
+    try {
+      const summary = await sendPreWriteSummary(topic, messages);
+      onStartWriting(summary);
+    } catch {
+      onStartWriting('');
+    }
+  };
+
   return (
     <div className="pre-write-chat">
       <div className="pre-write-topic-banner">
@@ -97,7 +111,7 @@ export function PreWriteChat({
         <p>{topic}</p>
       </div>
 
-      <div className="chat-messages">
+      <div className="chat-messages" role="log" aria-live="polite" aria-label="对话记录">
         {messages.map((msg) => (
           <ChatBubble key={msg.id} message={msg} />
         ))}
@@ -119,10 +133,17 @@ export function PreWriteChat({
         </button>
       </div>
 
-      {messages.length >= 4 && (
-        <button className="start-writing-btn" onClick={onStartWriting}>
-          我已经想清楚了，开始写作
-        </button>
+      <button
+        className="start-writing-btn"
+        onClick={handleStartWriting}
+        disabled={summaryLoading}
+      >
+        {summaryLoading ? '正在整理思考...' : '我已经想清楚了，开始写作'}
+        {coachReady && <span className="ready-badge">教练认为你已准备好</span>}
+      </button>
+
+      {messages.filter(m => m.role === 'user').length < 2 && (
+        <p className="pre-write-nudge">建议至少和教练聊2轮再开始写</p>
       )}
     </div>
   );

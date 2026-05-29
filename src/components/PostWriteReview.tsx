@@ -5,6 +5,7 @@ import { saveEssay } from '../services/storageService';
 import { ChatBubble } from './ChatBubble';
 import { LoadingDots } from './LoadingDots';
 import './PostWriteReview.css';
+import { EssayDrawer } from './EssayDrawer';
 
 interface PostWriteReviewProps {
   topic: string;
@@ -35,6 +36,7 @@ export function PostWriteReview({
 }: PostWriteReviewProps) {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const sentFirstRef = useRef(false);
 
@@ -186,7 +188,7 @@ export function PostWriteReview({
         <h3>复盘对话</h3>
       </div>
 
-      <div className="chat-messages">
+      <div className="chat-messages" role="log" aria-live="polite" aria-label="对话记录">
         {messages.map((msg) => (
           <ChatBubble
             key={msg.id}
@@ -196,6 +198,13 @@ export function PostWriteReview({
         {loading && <LoadingDots />}
         <div ref={bottomRef} />
       </div>
+
+      <button
+        className="view-essay-btn"
+        onClick={() => setDrawerOpen(true)}
+      >
+        查看我的作文
+      </button>
 
       <div className="chat-input-area">
         <textarea
@@ -216,6 +225,12 @@ export function PostWriteReview({
           {loading ? '正在生成评分...' : '完成本次训练'}
         </button>
       )}
+
+      <EssayDrawer
+        content={essayContent}
+        isOpen={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      />
     </div>
   );
 }

@@ -17,7 +17,9 @@ export function WritingDesk() {
   const [preWriteSummary, setPreWriteSummary] = useState('');
   const [originalContent, setOriginalContent] = useState<string | null>(null);
   const [restored, setRestored] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | ''>('');
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const savedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Restore draft on mount
   useEffect(() => {
@@ -42,6 +44,7 @@ export function WritingDesk() {
     debounceTimer.current = setTimeout(() => {
       // Don't save on topic-input (nothing meaningful) or completed
       if (step === 'topic-input' || step === 'completed') return;
+      setSaveStatus('saving');
       saveDraft({
         step,
         topic,
@@ -52,6 +55,15 @@ export function WritingDesk() {
         preWriteSummary,
         savedAt: Date.now(),
       });
+      setSaveStatus('saved');
+      // Clear previous timeout
+      if (savedTimeoutRef.current) {
+        clearTimeout(savedTimeoutRef.current);
+      }
+      // Auto-hide after 2 seconds
+      savedTimeoutRef.current = setTimeout(() => {
+        setSaveStatus('');
+      }, 2000);
     }, 1000);
   }, [step, topic, questionId, preWriteMessages, content, postWriteMessages, preWriteSummary]);
 
@@ -61,6 +73,9 @@ export function WritingDesk() {
     return () => {
       if (debounceTimer.current) {
         clearTimeout(debounceTimer.current);
+      }
+      if (savedTimeoutRef.current) {
+        clearTimeout(savedTimeoutRef.current);
       }
       // Flush save immediately on unmount to avoid data loss
       if (step !== 'topic-input' && step !== 'completed') {
@@ -97,7 +112,6 @@ export function WritingDesk() {
 
   const handleRevise = () => {
     setOriginalContent(content);
-    setContent('');
     setPostWriteMessages([]);
     setSummary(null);
     setStep('writing');
@@ -129,6 +143,7 @@ export function WritingDesk() {
         onContentChange={setContent}
         onSubmit={() => setStep('post-write')}
         preWriteSummary={preWriteSummary}
+        saveStatus={saveStatus}
       />
     );
   }
