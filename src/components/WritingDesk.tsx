@@ -15,6 +15,7 @@ export function WritingDesk() {
   const [postWriteMessages, setPostWriteMessages] = useState<ChatMessage[]>([]);
   const [summary, setSummary] = useState<CompletionSummary | null>(null);
   const [preWriteSummary, setPreWriteSummary] = useState('');
+  const [originalContent, setOriginalContent] = useState<string | null>(null);
   const [restored, setRestored] = useState(false);
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -61,6 +62,10 @@ export function WritingDesk() {
       if (debounceTimer.current) {
         clearTimeout(debounceTimer.current);
       }
+      // Flush save immediately on unmount to avoid data loss
+      if (step !== 'topic-input' && step !== 'completed') {
+        saveDraft({ step, topic, questionId, preWriteMessages, content, postWriteMessages, preWriteSummary, savedAt: Date.now() });
+      }
     };
   }, [restored, debouncedSave]);
 
@@ -74,6 +79,7 @@ export function WritingDesk() {
     setSummary(s);
     setStep('completed');
     clearDraft();
+    setOriginalContent(null);
   };
 
   const handleStartNew = () => {
@@ -85,7 +91,16 @@ export function WritingDesk() {
     setPostWriteMessages([]);
     setSummary(null);
     setPreWriteSummary('');
+    setOriginalContent(null);
     clearDraft();
+  };
+
+  const handleRevise = () => {
+    setOriginalContent(content);
+    setContent('');
+    setPostWriteMessages([]);
+    setSummary(null);
+    setStep('writing');
   };
 
   if (step === 'topic-input') {
@@ -127,7 +142,9 @@ export function WritingDesk() {
         preWriteMessages={preWriteMessages}
         messages={postWriteMessages}
         onMessagesUpdate={setPostWriteMessages}
+        onAppendMessage={(msg) => setPostWriteMessages((prev) => [...prev, msg])}
         onComplete={handleComplete}
+        originalContent={originalContent}
       />
     );
   }
@@ -152,9 +169,14 @@ export function WritingDesk() {
           </div>
         </div>
         <p className="completion-takeaway">"{summary.coachTakeaway}"</p>
-        <button className="completion-btn" onClick={handleStartNew}>
-          开始新的训练
-        </button>
+        <div className="completion-actions">
+          <button className="completion-btn" onClick={handleStartNew}>
+            开始新的训练
+          </button>
+          <button className="completion-btn completion-btn-revise" onClick={handleRevise}>
+            修改这篇作文
+          </button>
+        </div>
       </div>
     );
   }
