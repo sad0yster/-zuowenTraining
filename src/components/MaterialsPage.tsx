@@ -4,6 +4,7 @@ import { MaterialsHome } from './MaterialsHome';
 import { MaterialDetail } from './MaterialDetail';
 import { MaterialsBrowse } from './MaterialsBrowse';
 import { LearningPaths } from './LearningPaths';
+import { ConceptMap } from './ConceptMap';
 import './MaterialsPage.css';
 
 type MaterialsView = 'home' | 'detail' | 'browse' | 'paths' | 'concept-map';
@@ -49,8 +50,15 @@ export function MaterialsPage() {
     );
   }
 
-  // For now, other views just show home
-  // In future tasks, we'll implement concept-map view
+  if (view === 'concept-map') {
+    return (
+      <ConceptMap
+        onSelectMaterial={handleSelectMaterial}
+        onBack={() => setView('home')}
+      />
+    );
+  }
+
   return (
     <MaterialsHome
       onSelectMaterial={handleSelectMaterial}
