@@ -1,0 +1,34 @@
+[
+  {
+    "id": "theme-self",
+    "type": "theme",
+    "name": "我与自我",
+    "description": "探索自我认知、个人价值、内心冲突",
+    "materialIds": ["m1", "m2", "m3"],
+    "order": 1
+  },
+  {
+    "id": "theme-others",
+    "type": "theme",
+    "name": "我与他人",
+    "description": "理解人际关系、社会互动、道德责任",
+    "materialIds": ["m4", "m5", "m6"],
+    "order": 2
+  },
+  {
+    "id": "ability-question",
+    "type": "ability",
+    "name": "学会质疑",
+    "description": "培养批判性思维，不盲从权威",
+    "materialIds": ["m1", "m7", "m8"],
+    "order": 1
+  },
+  {
+    "id": "ability-perspective",
+    "type": "ability",
+    "name": "多角度分析",
+    "description": "从不同立场看待同一问题",
+    "materialIds": ["m2", "m9", "m10"],
+    "order": 2
+  }
+]

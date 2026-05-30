@@ -1,0 +1,128 @@
+.learning-paths {
+  padding: 0;
+}
+
+.lp-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.lp-back {
+  font-size: 14px;
+  color: var(--color-body);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.lp-back:hover {
+  color: var(--color-primary);
+}
+
+.lp-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--color-primary);
+}
+
+.lp-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.lp-tab {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-body);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.lp-tab:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.lp-tab-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.lp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lp-path {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.lp-path-header {
+  padding: 16px 20px;
+  background: var(--color-bg-neutral);
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.lp-path-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.lp-path-desc {
+  font-size: 14px;
+  color: var(--color-body);
+}
+
+.lp-materials {
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-material {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 20px;
+  border: none;
+  border-bottom: 1px solid var(--color-border-dark);
+  background: var(--color-bg);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background var(--transition-fast);
+}
+
+.lp-material:last-child {
+  border-bottom: none;
+}
+
+.lp-material:hover {
+  background: var(--color-bg-hover);
+}
+
+.lp-material-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+}
+
+.lp-material-tension {
+  font-size: 13px;
+  color: var(--color-body);
+}
