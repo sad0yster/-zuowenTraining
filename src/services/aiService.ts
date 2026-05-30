@@ -261,9 +261,10 @@ export async function sendPostWriteMessage(
   topic: string,
   essayContent: string,
   history: ChatMessage[],
-  userMessage: string
+  userMessage: string,
+  originalContent?: string | null
 ): Promise<string> {
-  const systemPrompt =
+  let systemPrompt =
     ROLE_PROMPT +
     '\n\n' +
     THINKING_TOOLKIT +
@@ -272,6 +273,13 @@ export async function sendPostWriteMessage(
     topic +
     '\n\n学生作文全文如下：\n' +
     essayContent;
+
+  if (originalContent) {
+    systemPrompt +=
+      '\n\n=== 这是学生的修改稿。以下是第一稿原文，请对比两稿的差异，分析修改的进步和仍需改进之处 ===\n' +
+      originalContent;
+  }
+
   const apiMessages: ApiMessage[] = [
     { role: 'system', content: systemPrompt },
     ...toApiMessages(history),
@@ -420,6 +428,14 @@ export async function sendMaterialDiscussion(
   const apiMessages: ApiMessage[] = [
     { role: 'system', content: systemPrompt },
     { role: 'user', content: userMessage },
+  ];
+  return callLLM(apiMessages);
+}
+
+export async function sendDebateMessage(prompt: string): Promise<string> {
+  const apiMessages: ApiMessage[] = [
+    { role: 'system', content: '你是一个善于辩论的AI。请用中文回应。' },
+    { role: 'user', content: prompt },
   ];
   return callLLM(apiMessages);
 }
