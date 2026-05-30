@@ -222,8 +222,6 @@
 .material-detail {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 140px);
-  min-height: calc(100dvh - 140px);
 }
 
 .md-header {
