@@ -1,8 +1,5 @@
-.materials-page h2 {
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  margin-bottom: 4px;
+.materials-page {
+  padding: 0;
 }
 
 /* === 概念地图 === */
