@@ -3,7 +3,7 @@
   --color-primary: #0a0a0a;
   --color-secondary: #3a3a3c;
   --color-body: #5a5a5c;
-  --color-muted: #888888;
+  --color-muted: #767676;
   --color-disabled: #a8a8aa;
   --color-border: #e5e5e5;
   --color-border-dark: #ededed;
@@ -61,8 +61,8 @@ body {
 .app {
   max-width: 720px;
   margin: 0 auto;
-  min-height: 100vh;
   background: var(--color-bg);
+  overflow: hidden;
 }
 
 .app-header {
@@ -80,6 +80,26 @@ body {
   padding: 24px;
   padding-bottom: 72px;
   animation: fadeIn var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Tab 面板淡入淡出 === */
+
+.tab-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.tab-panel[data-active="true"] {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
 }
 
 @keyframes fadeIn {
@@ -248,6 +268,12 @@ button:active:not(:disabled) {
   justify-content: center;
   z-index: 100;
   padding: 20px;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.recent-detail-overlay.overlay-closing {
+  opacity: 0;
 }
 
 .recent-detail {
@@ -258,6 +284,12 @@ button:active:not(:disabled) {
   width: 100%;
   max-height: 80vh;
   overflow-y: auto;
+  transform: translateY(0);
+  transition: transform 0.2s ease;
+}
+
+.recent-detail-overlay.overlay-closing .recent-detail {
+  transform: translateY(20px);
 }
 
 .recent-detail h4 {
