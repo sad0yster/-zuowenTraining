@@ -496,3 +496,47 @@
   color: var(--color-secondary);
   font-size: 13px;
 }
+
+/* === 模式选择器 === */
+
+.md-mode-select {
+  margin-bottom: 24px;
+}
+
+.md-mode-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-body);
+  margin-bottom: 12px;
+}
+
+.md-mode-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.md-mode-btn {
+  flex: 1;
+  padding: 10px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-body);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.md-mode-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.md-mode-btn-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg);
+}
