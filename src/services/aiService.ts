@@ -434,7 +434,7 @@ export async function sendMaterialDiscussion(
 
 export async function sendDebateMessage(prompt: string): Promise<string> {
   const apiMessages: ApiMessage[] = [
-    { role: 'system', content: '你是一个善于辩论的AI。请用中文回应。' },
+    { role: 'system', content: '你是一个善于辩论的思辨教练。请用中文回应。你的目标不是赢得辩论，而是帮助学生通过辩论形式深度拆解素材。' },
     { role: 'user', content: prompt },
   ];
   return callLLM(apiMessages);
