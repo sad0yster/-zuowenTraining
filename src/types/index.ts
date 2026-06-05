@@ -168,7 +168,7 @@ export interface ReadingMaterial {
 }
 
 // Debate
-export type DebateMode = 'judge' | 'opponent';
+export type DebateStage = 'concept' | 'opposition' | 'synthesis' | 'application';
 export type DebateSide = 'for' | 'against';
 
 export interface DebateRound {
@@ -177,14 +177,16 @@ export interface DebateRound {
   content: string;
   isUser: boolean;
   timestamp: number;
+  stage: DebateStage;
 }
 
 export interface DebateRecord {
   id: string;
   materialId: string;
-  mode: DebateMode;
   rounds: DebateRound[];
-  summary?: string;
+  currentStage: DebateStage;
+  completedStages: DebateStage[];
+  harvest?: string;
   createdAt: number;
 }
 
