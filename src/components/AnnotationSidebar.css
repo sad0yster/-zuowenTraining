@@ -1,0 +1,128 @@
+/* Desktop sidebar */
+.ann-sidebar {
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+}
+
+.ann-sidebar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.ann-sidebar-empty {
+  font-size: 13px;
+  color: var(--color-muted);
+  text-align: center;
+  padding: 24px 0;
+}
+
+.ann-sidebar-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-bg-neutral);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.ann-sidebar-item:last-child {
+  border-bottom: none;
+}
+
+.ann-sidebar-item:hover {
+  background: var(--color-bg-hover);
+}
+
+.ann-sidebar-item.is-highlighted {
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  margin: 0 -8px;
+}
+
+.ann-sidebar-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-tag-bg);
+  color: var(--color-tag);
+  margin-bottom: 6px;
+}
+
+.ann-sidebar-comment {
+  font-size: 13px;
+  color: var(--color-secondary);
+  line-height: 1.5;
+}
+
+/* Mobile bottom sheet overlay */
+.ann-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.ann-sheet-overlay.sheet-closing {
+  opacity: 0;
+}
+
+/* Mobile bottom sheet */
+.ann-sheet {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  width: 100%;
+  max-width: 720px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 12px 16px 24px;
+  transform: translateY(0);
+  transition: transform 0.2s ease;
+}
+
+.ann-sheet-overlay.sheet-closing .ann-sheet {
+  transform: translateY(20px);
+}
+
+.ann-sheet-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-border);
+  margin: 0 auto 16px;
+}
+
+.ann-sheet-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-muted);
+  margin-bottom: 12px;
+}
+
+/* Responsive: hide sidebar on mobile, show sheet instead */
+@media (max-width: 768px) {
+  .ann-sidebar-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .ann-sheet-overlay {
+    display: none;
+  }
+}
