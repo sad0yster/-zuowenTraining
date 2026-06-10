@@ -86,11 +86,17 @@ export interface DrillRecordV2 {
 export type TabId = 'materials' | 'training' | 'writing' | 'me';
 
 export type MaterialCategory =
-  | 'self-and-others'
-  | 'self-and-world'
-  | 'self-and-era'
-  | 'self-and-tradition'
-  | 'self-and-self';
+  | 'self-growth'
+  | 'learning'
+  | 'family'
+  | 'social'
+  | 'society'
+  | 'tradition'
+  | 'technology'
+  | 'choice'
+  | 'ethics'
+  | 'existence'
+  | 'deep-water';
 
 export interface Material {
   id: string;
@@ -101,6 +107,9 @@ export interface Material {
   guideQuestions: string[];  // AI 起始追问方向
   linkedDrills: DrillType[];
   tags: string[];
+  essayAngle?: string;       // 立意切口：可直接写进作文的锐利结论
+  thinkingReef?: string;     // 思辨暗礁：真正的悖论
+  relatedMaterialIds?: string[]; // 关联的生活场景素材
 }
 
 export interface ConceptExample {
@@ -132,10 +141,11 @@ export interface ModelEssay {
   topic: string;
   genre: EssayGenre;
   category: EssayCategory;
-  score: number;
   content: string;
   annotations: EssayAnnotation[];
   tags: string[];
+  questionId?: string;
+  techniques: string[];
 }
 
 export interface EssayAnnotation {
@@ -165,6 +175,8 @@ export interface ReadingMaterial {
   source?: string;
   usageHint: string;
   quotable: boolean;
+  keyInsight: string;
+  relatedRmIds?: string[];
 }
 
 // Debate
