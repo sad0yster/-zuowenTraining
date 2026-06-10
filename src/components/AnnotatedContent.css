@@ -1,0 +1,45 @@
+.ann-paragraph {
+  position: relative;
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.9;
+  padding: 2px 0 2px 12px;
+  border-left: 3px solid transparent;
+  cursor: default;
+  transition: background var(--transition-fast);
+}
+
+.ann-paragraph.has-annotation {
+  cursor: pointer;
+  background: var(--color-accent-soft);
+  border-left-color: var(--color-accent);
+}
+
+.ann-paragraph.has-annotation:hover {
+  background: rgba(0, 212, 164, 0.18);
+}
+
+.ann-paragraph.is-active {
+  background: rgba(0, 212, 164, 0.22);
+}
+
+.ann-paragraph.is-flashing {
+  animation: annPulse 0.6s ease;
+}
+
+@keyframes annPulse {
+  0% { background: rgba(0, 212, 164, 0.35); }
+  100% { background: rgba(0, 212, 164, 0.22); }
+}
+
+.ann-inline-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 6px;
+  margin-left: 6px;
+  border-radius: var(--radius-sm);
+  background: var(--color-tag-bg);
+  color: var(--color-tag);
+  vertical-align: middle;
+}
