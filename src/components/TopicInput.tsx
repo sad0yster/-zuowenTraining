@@ -1,10 +1,13 @@
 import { useState, useMemo } from 'react';
-import type { Question, SpeculativeType } from '../types';
+import type { Question, SpeculativeType, QuestionTheme } from '../types';
 import { loadEssays } from '../services/storageService';
 import questions from '../data/questions.json';
 import './TopicInput.css';
 
 const allQuestions = questions as Question[];
+
+const THEMES: QuestionTheme[] = ['科技', '人文', '社会', '成长', '文化', '价值', '自我', '时代'];
+const TYPES: SpeculativeType[] = ['single', 'binary', 'ternary'];
 
 function getRecommendedQuestions(): Question[] {
   const essays = loadEssays();
@@ -42,35 +45,41 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [customTopic, setCustomTopic] = useState('');
   const [searchText, setSearchText] = useState('');
-  const [filterType, setFilterType] = useState<SpeculativeType | ''>('');
-  const [filterDifficulty, setFilterDifficulty] = useState<number | ''>('');
-  const [filterTag, setFilterTag] = useState('');
+  const [showFilters, setShowFilters] = useState(false);
+  const [selectedThemes, setSelectedThemes] = useState<QuestionTheme[]>([]);
+  const [selectedTypes, setSelectedTypes] = useState<SpeculativeType[]>([]);
   const recommended = useMemo(getRecommendedQuestions, []);
 
-  const popularTags = useMemo(() => {
-    const tagCount = new Map<string, number>();
-    allQuestions.forEach(q => q.tags.forEach(t => tagCount.set(t, (tagCount.get(t) || 0) + 1)));
-    return [...tagCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10).map(([t]) => t);
-  }, []);
-
   const filteredQuestions = useMemo(() => {
+    const recommendedIds = new Set(recommended.map(q => q.id));
     return allQuestions.filter(q => {
+      if (recommendedIds.has(q.id)) return false;
       if (searchText && !q.text.includes(searchText) && !q.source.includes(searchText)) return false;
-      if (filterType && q.speculativeType !== filterType) return false;
-      if (filterDifficulty && q.difficulty !== filterDifficulty) return false;
-      if (filterTag && !q.tags.includes(filterTag)) return false;
+      if (selectedThemes.length > 0 && !selectedThemes.includes(q.theme)) return false;
+      if (selectedTypes.length > 0 && !selectedTypes.includes(q.speculativeType)) return false;
       return true;
     });
-  }, [searchText, filterType, filterDifficulty, filterTag]);
+  }, [searchText, selectedThemes, selectedTypes, recommended]);
+
+  const toggleTheme = (theme: QuestionTheme) => {
+    setSelectedThemes(prev =>
+      prev.includes(theme) ? prev.filter(t => t !== theme) : [...prev, theme]
+    );
+  };
+
+  const toggleType = (type: SpeculativeType) => {
+    setSelectedTypes(prev =>
+      prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]
+    );
+  };
 
   const clearFilters = () => {
     setSearchText('');
-    setFilterType('');
-    setFilterDifficulty('');
-    setFilterTag('');
+    setSelectedThemes([]);
+    setSelectedTypes([]);
   };
 
-  const hasFilters = searchText || filterType || filterDifficulty || filterTag;
+  const hasFilters = searchText || selectedThemes.length > 0 || selectedTypes.length > 0;
 
   const handleStart = () => {
     if (mode === 'pick' && selectedId) {
@@ -109,32 +118,45 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
             onChange={e => setSearchText(e.target.value)}
             className="search-input"
           />
-          <div className="filter-row">
-            <select value={filterType} onChange={e => setFilterType(e.target.value as SpeculativeType | '')}>
-              <option value="">全部类型</option>
-              <option value="single">一元思辨</option>
-              <option value="binary">二元思辨</option>
-              <option value="ternary">三元思辨</option>
-            </select>
-            <select value={filterDifficulty} onChange={e => setFilterDifficulty(e.target.value ? Number(e.target.value) : '')}>
-              <option value="">全部难度</option>
-              <option value="1">基础</option>
-              <option value="2">进阶</option>
-              <option value="3">挑战</option>
-            </select>
-          </div>
-          <div className="tag-filters">
-            {popularTags.map(tag => (
-              <button
-                key={tag}
-                className={`tag-btn ${filterTag === tag ? 'active' : ''}`}
-                onClick={() => setFilterTag(filterTag === tag ? '' : tag)}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
+          <button
+            className={`filter-toggle ${showFilters ? 'active' : ''}`}
+            onClick={() => setShowFilters(!showFilters)}
+          >
+            筛选
+          </button>
         </div>
+        {showFilters && (
+          <div className="filter-panel">
+            <div className="filter-section">
+              <span className="filter-label">主题：</span>
+              <div className="filter-chips">
+                {THEMES.map(theme => (
+                  <button
+                    key={theme}
+                    className={`chip ${selectedThemes.includes(theme) ? 'active' : ''}`}
+                    onClick={() => toggleTheme(theme)}
+                  >
+                    {theme}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="filter-section">
+              <span className="filter-label">思辨类型：</span>
+              <div className="filter-chips">
+                {TYPES.map(type => (
+                  <button
+                    key={type}
+                    className={`chip ${selectedTypes.includes(type) ? 'active' : ''}`}
+                    onClick={() => toggleType(type)}
+                  >
+                    {type === 'single' ? '一元' : type === 'binary' ? '二元' : '三元'}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
         {hasFilters && (
           <div className="filter-status">
             <span>筛选结果：{filteredQuestions.length} 道题</span>
@@ -156,7 +178,7 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
                     <span className="card-tag">
                       {q.speculativeType === 'single' ? '一元' : q.speculativeType === 'binary' ? '二元' : '三元'}
                     </span>
-                    <span className="card-tag">{q.tags[0]}</span>
+                    {q.theme && <span className="card-tag">{q.theme}</span>}
                   </div>
                 </div>
               ))}
@@ -171,13 +193,9 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
               <p className="card-desc">{q.text.slice(0, 80)}...</p>
               <div className="card-tags">
                 <span className="card-tag">
-                  {q.difficulty === 1
-                    ? '基础'
-                    : q.difficulty === 2
-                      ? '进阶'
-                      : '挑战'}
+                  {q.speculativeType === 'single' ? '一元' : q.speculativeType === 'binary' ? '二元' : '三元'}
                 </span>
-                <span className="card-tag">{q.tags[0]}</span>
+                {q.theme && <span className="card-tag">{q.theme}</span>}
               </div>
             </div>
           ))}
