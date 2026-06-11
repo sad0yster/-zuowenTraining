@@ -49,17 +49,18 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
   const [selectedThemes, setSelectedThemes] = useState<QuestionTheme[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<SpeculativeType[]>([]);
   const recommended = useMemo(getRecommendedQuestions, []);
+  const hasFilters = searchText || selectedThemes.length > 0 || selectedTypes.length > 0;
 
   const filteredQuestions = useMemo(() => {
     const recommendedIds = new Set(recommended.map(q => q.id));
     return allQuestions.filter(q => {
-      if (recommendedIds.has(q.id)) return false;
+      if (!hasFilters && recommendedIds.has(q.id)) return false;
       if (searchText && !q.text.includes(searchText) && !q.source.includes(searchText)) return false;
       if (selectedThemes.length > 0 && !selectedThemes.includes(q.theme)) return false;
       if (selectedTypes.length > 0 && !selectedTypes.includes(q.speculativeType)) return false;
       return true;
     });
-  }, [searchText, selectedThemes, selectedTypes, recommended]);
+  }, [searchText, selectedThemes, selectedTypes, recommended, hasFilters]);
 
   const toggleTheme = (theme: QuestionTheme) => {
     setSelectedThemes(prev =>
@@ -78,8 +79,6 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
     setSelectedThemes([]);
     setSelectedTypes([]);
   };
-
-  const hasFilters = searchText || selectedThemes.length > 0 || selectedTypes.length > 0;
 
   const handleStart = () => {
     if (mode === 'pick' && selectedId) {
@@ -164,7 +163,7 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
           </div>
         )}
         <div className="question-list">
-          {recommended.length > 0 && (
+          {recommended.length > 0 && !hasFilters && (
             <div className="recommend-section">
               <span className="recommend-label">推荐练笔</span>
               {recommended.map((q) => (
