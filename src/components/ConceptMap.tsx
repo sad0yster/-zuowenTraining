@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import type { Material, KnowledgeConcept } from '../types';
+import type { Material, KnowledgeConcept, ConceptTheme } from '../types';
 import materials from '../data/materials.json';
 import conceptsData from '../data/knowledge/concepts.json';
+import themesData from '../data/knowledge/themes.json';
 import './ConceptMap.css';
 
 const allMaterials = materials as Material[];
 const concepts = conceptsData as KnowledgeConcept[];
+const themes = themesData as ConceptTheme[];
 
 interface ConceptMapProps {
   onSelectMaterial: (material: Material) => void;
@@ -13,29 +15,79 @@ interface ConceptMapProps {
 }
 
 export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
+  const [view, setView] = useState<'themes' | { themeId: string }>('themes');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  // Group concepts by theme
+  const conceptsByTheme = new Map<string, KnowledgeConcept[]>();
+  for (const concept of concepts) {
+    const list = conceptsByTheme.get(concept.theme) ?? [];
+    list.push(concept);
+    conceptsByTheme.set(concept.theme, list);
+  }
+
+  // Level 1: Theme overview
+  if (view === 'themes') {
+    return (
+      <div className="concept-map">
+        <div className="cm-header">
+          <button className="cm-back" onClick={onBack}>←</button>
+          <h2>概念地图</h2>
+        </div>
+        <p className="cm-subtitle">按写作主题组织，帮你建立系统思维框架</p>
+        <div className="cm-theme-grid">
+          {themes.map(theme => {
+            const count = conceptsByTheme.get(theme.id)?.length ?? 0;
+            return (
+              <button
+                key={theme.id}
+                className="cm-theme-card"
+                onClick={() => {
+                  setView({ themeId: theme.id });
+                  setExpandedId(null);
+                }}
+              >
+                <span className="cm-theme-icon">{theme.icon}</span>
+                <div className="cm-theme-info">
+                  <div className="cm-theme-name">{theme.name}</div>
+                  <div className="cm-theme-desc">{theme.description}</div>
+                </div>
+                <span className="cm-theme-count">{count} 个概念</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  // Level 2 & 3: Theme detail with accordion concepts
+  const currentTheme = themes.find(t => t.id === view.themeId);
+  const themeConcepts = conceptsByTheme.get(view.themeId) ?? [];
 
   return (
     <div className="concept-map">
       <div className="cm-header">
-        <button className="cm-back" onClick={onBack}>←</button>
-        <h2>概念地图</h2>
+        <button className="cm-back" onClick={() => setView('themes')}>←</button>
+        <h2>{currentTheme?.name ?? '概念地图'}</h2>
       </div>
-
-      <p className="cm-subtitle">15个核心概念，帮你建立思维框架</p>
-
+      {currentTheme && (
+        <p className="cm-subtitle">{currentTheme.description}</p>
+      )}
       <div className="cm-list">
-        {concepts.map(concept => (
+        {themeConcepts.map(concept => (
           <div key={concept.id} className="cm-concept">
             <button
               className="cm-concept-header"
               onClick={() => setExpandedId(expandedId === concept.id ? null : concept.id)}
             >
-              <div className="cm-concept-name">{concept.concept}</div>
-              <div className="cm-concept-hook">{concept.hook}</div>
+              <div className="cm-concept-header-text">
+                <div className="cm-concept-name">{concept.concept}</div>
+                <div className="cm-concept-hook">{concept.hook}</div>
+              </div>
+              <span className={`cm-chevron ${expandedId === concept.id ? 'cm-chevron--expanded' : ''}`} />
             </button>
-            {expandedId === concept.id && (
-              <div className="cm-concept-detail">
+            <div className={`cm-concept-detail ${expandedId === concept.id ? 'cm-concept-detail--expanded' : ''}`}>
                 <div className="cm-detail-section">
                   <div className="cm-detail-label">分析句式</div>
                   <div className="cm-detail-text">{concept.analysisTpl}</div>
@@ -57,9 +109,11 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
                   <div className="cm-detail-label">相关素材</div>
                   <div className="cm-related">
                     {allMaterials
-                      .filter(m => m.tags.some(t =>
-                        concept.concept.includes(t) || t.includes(concept.concept)
-                      ))
+                      .filter(m => {
+                        if (concept.relatedMaterials?.includes(m.id)) return true;
+                        const searchText = [...m.tags, m.title, m.coreTension].join(' ').toLowerCase();
+                        return concept.applicableTo?.some(a => searchText.includes(a.toLowerCase()));
+                      })
                       .slice(0, 3)
                       .map(m => (
                         <button
@@ -77,7 +131,6 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
                   </div>
                 </div>
               </div>
-            )}
           </div>
         ))}
       </div>

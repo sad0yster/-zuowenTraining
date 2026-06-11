@@ -2,6 +2,7 @@
   padding: 0;
 }
 
+/* Header */
 .cm-header {
   display: flex;
   align-items: center;
@@ -35,6 +36,71 @@
   margin-bottom: 24px;
 }
 
+/* Level 1: Theme grid */
+.cm-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .cm-theme-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cm-theme-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.cm-theme-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.cm-theme-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.cm-theme-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cm-theme-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.cm-theme-desc {
+  font-size: 13px;
+  color: var(--color-body);
+  line-height: 1.45;
+}
+
+.cm-theme-count {
+  font-size: 12px;
+  color: var(--color-body);
+  background: var(--color-bg-neutral);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+/* Level 2: Concept list */
 .cm-list {
   display: flex;
   flex-direction: column;
@@ -55,7 +121,38 @@
   cursor: pointer;
   text-align: left;
   font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   transition: background var(--transition-fast);
+}
+
+.cm-concept-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.cm-chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 300ms ease-out;
+}
+
+.cm-chevron::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-body);
+  border-bottom: 2px solid var(--color-body);
+  transform: rotate(-45deg);
+}
+
+.cm-chevron--expanded {
+  transform: rotate(90deg);
 }
 
 .cm-concept-header:hover {
@@ -74,7 +171,17 @@
   color: var(--color-body);
 }
 
+/* Level 3: Concept detail (accordion) */
 .cm-concept-detail {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 300ms ease-out, opacity 300ms ease-out;
+}
+
+.cm-concept-detail--expanded {
+  max-height: 600px;
+  opacity: 1;
   padding: 0 20px 20px;
   border-top: 1px solid var(--color-border-dark);
 }
