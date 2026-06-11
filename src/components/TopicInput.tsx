@@ -72,12 +72,6 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
 
   const hasFilters = searchText || filterType || filterDifficulty || filterTag;
 
-  // Temporarily reference these to avoid noUnusedLocals errors until Task 4 JSX uses them
-  void popularTags;
-  void filteredQuestions;
-  void clearFilters;
-  void hasFilters;
-
   const handleStart = () => {
     if (mode === 'pick' && selectedId) {
       const q = allQuestions.find((q) => q.id === selectedId);
@@ -106,6 +100,47 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
       </div>
 
       {mode === 'pick' && (
+        <>
+        <div className="search-filters">
+          <input
+            type="text"
+            placeholder="搜索题干或来源..."
+            value={searchText}
+            onChange={e => setSearchText(e.target.value)}
+            className="search-input"
+          />
+          <div className="filter-row">
+            <select value={filterType} onChange={e => setFilterType(e.target.value as SpeculativeType | '')}>
+              <option value="">全部类型</option>
+              <option value="single">一元思辨</option>
+              <option value="binary">二元思辨</option>
+              <option value="ternary">三元思辨</option>
+            </select>
+            <select value={filterDifficulty} onChange={e => setFilterDifficulty(e.target.value ? Number(e.target.value) : '')}>
+              <option value="">全部难度</option>
+              <option value="1">基础</option>
+              <option value="2">进阶</option>
+              <option value="3">挑战</option>
+            </select>
+          </div>
+          <div className="tag-filters">
+            {popularTags.map(tag => (
+              <button
+                key={tag}
+                className={`tag-btn ${filterTag === tag ? 'active' : ''}`}
+                onClick={() => setFilterTag(filterTag === tag ? '' : tag)}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+        {hasFilters && (
+          <div className="filter-status">
+            <span>筛选结果：{filteredQuestions.length} 道题</span>
+            <button className="clear-filters" onClick={clearFilters}>清空筛选</button>
+          </div>
+        )}
         <div className="question-list">
           {recommended.length > 0 && (
             <div className="recommend-section">
@@ -127,7 +162,7 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
               ))}
             </div>
           )}
-          {allQuestions.map((q) => (
+          {filteredQuestions.map((q) => (
             <div
               key={q.id}
               className={`card card-clickable ${selectedId === q.id ? 'selected' : ''}`}
@@ -146,7 +181,13 @@ export function TopicInput({ onConfirm }: TopicInputProps) {
               </div>
             </div>
           ))}
+          {filteredQuestions.length === 0 && hasFilters && (
+            <div className="empty-state" style={{ padding: '20px', textAlign: 'center', color: 'var(--color-text-secondary)' }}>
+              没有找到匹配的题目，试试调整筛选条件
+            </div>
+          )}
         </div>
+        </>
       )}
 
       {mode === 'custom' && (
