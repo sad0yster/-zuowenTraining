@@ -180,7 +180,7 @@
 }
 
 .cm-concept-detail--expanded {
-  max-height: 600px;
+  max-height: 800px;
   opacity: 1;
   padding: 0 20px 20px;
   border-top: 1px solid var(--color-border-dark);
@@ -252,4 +252,14 @@
 
 .cm-related-item:hover {
   border-color: var(--color-accent);
+}
+
+.cm-related-item--concept {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.cm-related-item--concept:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
 }

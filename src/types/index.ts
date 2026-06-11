@@ -137,6 +137,7 @@ export interface KnowledgeConcept {
   analysisTpl: string;
   examples: ConceptExample[];
   relatedMaterials: string[];
+  relatedConcepts?: string[];
   depthLevel?: number;
   references?: string[];
 }

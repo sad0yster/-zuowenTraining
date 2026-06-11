@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import type { Material, KnowledgeConcept, ConceptTheme } from '../types';
 import materials from '../data/materials.json';
 import conceptsData from '../data/knowledge/concepts.json';
@@ -19,12 +19,23 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // Group concepts by theme
-  const conceptsByTheme = new Map<string, KnowledgeConcept[]>();
-  for (const concept of concepts) {
-    const list = conceptsByTheme.get(concept.theme) ?? [];
-    list.push(concept);
-    conceptsByTheme.set(concept.theme, list);
-  }
+  const conceptsByTheme = useMemo(() => {
+    const map = new Map<string, KnowledgeConcept[]>();
+    for (const concept of concepts) {
+      const list = map.get(concept.theme) ?? [];
+      list.push(concept);
+      map.set(concept.theme, list);
+    }
+    return map;
+  }, []);
+
+  // Navigate to a related concept (may be in a different theme)
+  const navigateToConcept = (conceptId: string) => {
+    const target = concepts.find(c => c.id === conceptId);
+    if (!target) return;
+    setView({ themeId: target.theme });
+    setExpandedId(conceptId);
+  };
 
   // Level 1: Theme overview
   if (view === 'themes') {
@@ -79,6 +90,8 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
           <div key={concept.id} className="cm-concept">
             <button
               className="cm-concept-header"
+              aria-expanded={expandedId === concept.id}
+              aria-controls={`detail-${concept.id}`}
               onClick={() => setExpandedId(expandedId === concept.id ? null : concept.id)}
             >
               <div className="cm-concept-header-text">
@@ -87,7 +100,7 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
               </div>
               <span className={`cm-chevron ${expandedId === concept.id ? 'cm-chevron--expanded' : ''}`} />
             </button>
-            <div className={`cm-concept-detail ${expandedId === concept.id ? 'cm-concept-detail--expanded' : ''}`}>
+            <div id={`detail-${concept.id}`} className={`cm-concept-detail ${expandedId === concept.id ? 'cm-concept-detail--expanded' : ''}`}>
                 <div className="cm-detail-section">
                   <div className="cm-detail-label">分析句式</div>
                   <div className="cm-detail-text">{concept.analysisTpl}</div>
@@ -130,6 +143,29 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
                     }
                   </div>
                 </div>
+                {concept.relatedConcepts && concept.relatedConcepts.length > 0 && (
+                  <div className="cm-detail-section">
+                    <div className="cm-detail-label">相关概念</div>
+                    <div className="cm-related">
+                      {concept.relatedConcepts.map(relatedId => {
+                        const related = concepts.find(c => c.id === relatedId);
+                        if (!related) return null;
+                        return (
+                          <button
+                            key={relatedId}
+                            className="cm-related-item cm-related-item--concept"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigateToConcept(relatedId);
+                            }}
+                          >
+                            {related.concept}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
           </div>
         ))}
