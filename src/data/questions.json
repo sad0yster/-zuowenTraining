@@ -1,52 +1,1770 @@
 [
-  {"id":"q1","text":"随着互联网的普及、人工智能的应用，越来越多的问题能很快得到答案。那么，我们的问题是否会越来越少？","source":"2024新课标I卷","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["科技与思考","问题意识","二元思辨"]},
-  {"id":"q2","text":"每个人都要学习与他人相处。有时，我们为避免冲突而不愿表达自己的想法。其实，坦诚交流才有可能迎来真正的相遇。","source":"2024全国甲卷","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["人际交流","真诚","一元思辨"]},
-  {"id":"q3","text":"长久以来，人们只能看到月球固定朝向地球的一面，\"嫦娥四号\"揭开了月背的神秘面纱；随着\"天问一号\"飞离地球，航天人的目光投向更远的深空。正如人类的太空之旅，我们每个人也都在不断抵达未知之境。","source":"2024新课标II卷","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["探索","未知","一元思辨"]},
-  {"id":"q4","text":"人们因技术发展得以更好地掌控时间，但也有人因此成了时间的仆人。","source":"2023全国甲卷","genre":"argumentative","speculativeType":"binary","difficulty":3,"tags":["技术与时间","异化","二元思辨"]},
-  {"id":"q5","text":"吹灭别人的灯，并不会让自己更加光明；阻挡别人的路，也不会让自己行得更远。\"一花独放不是春，百花齐放春满园。\"如果世界上只有一种花朵，就算这种花朵再美，那也是单调的。","source":"2023全国乙卷","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["合作与竞争","多元","二元思辨"]},
-  {"id":"q6","text":"好的故事，可以帮我们更好地表达和沟通，可以触动心灵、启迪智慧；好的故事，可以改变一个人的命运，可以展现一个民族的形象……故事是有力量的。","source":"2023新课标I卷","genre":"argumentative","speculativeType":"single","difficulty":1,"tags":["故事","叙事力量","一元思辨"]},
-  {"id":"q7","text":"\"安静一下不被打扰\"的想法，在当代青少年中也不鲜见。青少年在学习、生活中，有时希望有一个自己的空间，放松，沉淀，成长。","source":"2023新课标II卷","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["成长","自我空间","一元思辨"]},
-  {"id":"q8","text":"《红楼梦》中众人给匾额题名，或直接移用，或借鉴化用，或根据情境独创，产生了不同的艺术效果。这个现象也能在更广泛的领域给人以启示。","source":"2022全国甲卷","genre":"argumentative","speculativeType":"ternary","difficulty":3,"tags":["移用化用独创","三元思辨","学习与创新"]},
-  {"id":"q9","text":"\"本手、妙手、俗手\"是围棋的三个术语。本手是合乎棋理的正规下法，妙手是出人意料的精妙下法，俗手是貌似合理而从全局看受损的下法。对本手理解深刻，才可能出现妙手；否则难免下出俗手。","source":"2022新高考I卷","genre":"argumentative","speculativeType":"ternary","difficulty":3,"tags":["本手妙手俗手","基础与创造","三元思辨"]},
-  {"id":"q10","text":"中国共产主义青年团成立100周年之际，一组在不同行业奋发有为的人物——他们选择了自己热爱的行业，也选择了事业创新发展的方向，展示出开启未来的力量。请以\"选择·创造·未来\"为主题写一篇文章。","source":"2022新高考II卷","genre":"argumentative","speculativeType":"ternary","difficulty":2,"tags":["选择","创造","未来","三元思辨"]},
-  {"id":"q11","text":"中国共产党走过百年历程。在党团结带领人民进行的伟大斗争中孕育了革命文化和社会主义先进文化。我们处在一个大有可为的时代……请以\"可为与有为\"为主题写一篇文章。","source":"2021全国甲卷","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["可为与有为","时代责任","二元思辨"]},
-  {"id":"q12","text":"汉代扬雄以射箭为喻：\"修身以为弓，矫思以为矢，立义以为的，奠而后发，发必中矣。\"这能给追求理想的当代青年以启示。请结合你对自身发展的思考写一篇文章。","source":"2021全国乙卷","genre":"argumentative","speculativeType":"single","difficulty":3,"tags":["理想","个人修养","一元思辨"]},
-  {"id":"q13","text":"1917年4月，毛泽东在《新青年》发表《体育之研究》，论及\"体育之效\"时指出：\"生而强者不必自喜也，生而弱者不必自悲也。吾生而弱乎，或者天之诱我以至于强，未可知也\"。","source":"2021新高考I卷","genre":"argumentative","speculativeType":"binary","difficulty":3,"tags":["强与弱","变化发展","二元思辨"]},
-  {"id":"q14","text":"阅读关于\"人\"字描红的漫画材料——用毛笔蘸墨在红模子上描着写字，有藏而不露、不偏不倚、缓缓出头等特征。请整体把握漫画内容和寓意写一篇文章。","source":"2021新高考II卷","genre":"argumentative","speculativeType":"single","difficulty":3,"tags":["做人","传统文化","一元思辨"]},
-  {"id":"q15","text":"春秋时期，齐桓公、管仲和鲍叔三人之间的故事。班级读书会围绕上述材料展开讨论。齐桓公、管仲和鲍叔三人，你对哪个感触最深？请结合你的感受和思考写一篇发言稿。","source":"2020全国I卷","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["历史人物","识人用人","一元思辨"]},
-  {"id":"q16","text":"墨子说：\"视人之国，若视其国；视人之家，若视其家；视人之身，若视其身。\"英国诗人约翰·多恩说：\"没有人是自成一体、与世隔绝的孤岛。\"请以\"携手同一世界，青年共创未来\"为主题写一篇演讲稿。","source":"2020全国II卷","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["人类命运","合作","一元思辨"]},
-  {"id":"q17","text":"在人生的旅程中，我们需要寻找各种\"镜子\"、不断绘制\"自画像\"来审视自我。毕业前，学校请你给即将入学的高一新生写一封信，主题是\"如何为自己画好像\"。","source":"2020全国III卷","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["自我认知","成长","一元思辨"]},
-  {"id":"q18","text":"面对突发的新冠肺炎疫情，防疫拉开了人们的距离——居家隔离、保持社交距离；抗疫密切了人们的联系——守望相助、众志成城。请以\"疫情中的距离与联系\"为主题写一篇文章。","source":"2020新高考I卷","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["距离与联系","社会","二元思辨"]},
-  {"id":"q19","text":"读万卷书，行万里路。电视台邀请你客串《中华地名》主持人，请以\"带你走近_______\"为题写一篇主持词。","source":"2020新高考II卷","genre":"argumentative","speculativeType":"single","difficulty":1,"tags":["地域文化","体验","一元思辨"]},
-  {"id":"q20","text":"有人说，现代人的生活越来越便捷了；也有人说，便捷让生活失去了深度。你怎么看？","source":"2025八省联考","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["科技与生活","现代性","二元思辨"]},
-  {"id":"q21","text":"\"将有作则思知止以安人\"\"譬如为山，未成一篑，止，吾止也\"\"大学之道，在止于至善\"\"陈力就列，不能者止\"——古代经典中多次出现\"止\"字，引发你怎样的联想与思考？","source":"2025 T8联考","genre":"argumentative","speculativeType":"single","difficulty":3,"tags":["知止","经典思辨","一元思辨"]},
-  {"id":"q22","text":"在日常生活中，信息不足往往可能导致认知偏差。随着时代和科技的发展，人们获取到的信息越来越丰富。那么，我们的认知是否会因此越来越准确？","source":"2025湖北T8联考","genre":"argumentative","speculativeType":"binary","difficulty":3,"tags":["信息与认知","技术批判","二元思辨"]},
-  {"id":"q23","text":"尼采说：\"人跟树是一样的，越是向往高处的阳光，它的根就越要伸进黑暗的地底。\"这意味着个人成长不仅要\"向上\"，\"向下\"的努力同样至关重要。你怎么理解？","source":"2024湖北智学联盟","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["向上与向下","个人成长","二元思辨"]},
-  {"id":"q24","text":"\"君子不立危墙之下\"提示避险自保；孟子却说\"道之所在，虽千万人，吾往矣\"呼唤挺身而出。对这两种态度，你怎么看？","source":"2024湖北12月联考","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["避险与赴道","价值选择","二元思辨"]},
-  {"id":"q25","text":"\"三思而后行，谋定而后动\"；但费尽思量的人，往往没有时间行动。对此你怎么理解？","source":"2024南京七校联考","genre":"argumentative","speculativeType":"binary","difficulty":1,"tags":["思与行","行动力","二元思辨"]},
-  {"id":"q26","text":"有人说，人要与自己和解，唯有接纳自己才能超越自己；也有人说人要与自己死磕，所谓成长与优秀不过是与自己死磕罢了。是放自己一马还是逼自己一把？","source":"2024江苏高三联考","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["和解与死磕","自我","二元思辨"]},
-  {"id":"q27","text":"ChatGPT、Sora等AI工具冲击下，\"如果你要成为编剧，要能写出构思更为巧妙的剧本；如果你要成为模特，要有和他人截然不同的气质\"——AI时代，我们当何去何从？","source":"2024 T8联考","genre":"argumentative","speculativeType":"single","difficulty":3,"tags":["AI","人的独特性","一元思辨"]},
-  {"id":"q28","text":"许倬云应对精神危机的方案是\"不去争，不去抢，往里走，安顿自己\"；但现实中很多人却是\"向外求、向外索取\"。你怎么看？","source":"2024贵阳一中月考","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["往里走与向外求","精神生活","二元思辨"]},
-  {"id":"q29","text":"人类模仿动物发明飞机、雷达，也存在邯郸学步、东施效颦；小学生用AI改写鲁迅文章；图灵说\"机器的思考是编程形成的，而人类的思考靠的是自主意识\"。以上材料引发了你对\"模仿与创新\"怎样的思考？","source":"2024东北三省联考","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["模仿与创新","AI","二元思辨"]},
-  {"id":"q30","text":"近几届奥运会，观众对金牌榜没有那么深的执念了，对输赢没有那么多苛求了，对运动员更包容了。尤其是年轻观众，他们从记事起就拥有\"平视世界\"的视角。你怎么理解这种\"平视\"？","source":"2024浙江新阵地联盟","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["平视世界","自信","一元思辨"]},
-  {"id":"q31","text":"孔子曰\"道之不行，已知之矣\"，却仍不放弃，被称为\"知其不可而为之\"。身处当今纷繁复杂的世界，我们面对所有问题，都需要\"知其不可而为之\"吗？","source":"2024广东S6联盟","genre":"argumentative","speculativeType":"binary","difficulty":3,"tags":["知其不可而为之","理性与执着","二元思辨"]},
-  {"id":"q32","text":"《乡土中国》中\"落叶归根\"的说法深入人心。但有人认为：\"时代在进步，不走出去便会被时代所淘汰，所谓落叶归根，真是越来越难了。\"你怎么看？","source":"2024广东12月联考","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["传统与现代","乡土","二元思辨"]},
-  {"id":"q33","text":"有人说，传统是创新的包袱；也有人说，传统是创新的根基。你怎么看？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["传承与创新","文化","二元思辨"]},
-  {"id":"q34","text":"有人说，人生最重要的是结果；也有人说，过程比结果更有意义。你怎么看？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":1,"tags":["过程与结果","人生意义","二元思辨"]},
-  {"id":"q35","text":"\"平凡\"不等于\"平庸\"。前者是一种姿态，后者是一种放弃。你怎么理解？","source":"经典命题","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["概念辨析","平凡与平庸","价值判断"]},
-  {"id":"q36","text":"有人说，自由是想做什么就做什么；也有人说，真正的自由是有能力不做不想做的事。请围绕\"自由\"写一篇文章。","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["自由","概念辨析","二元思辨"]},
-  {"id":"q37","text":"有人说，竞争让人进步；也有人说，合作让人类走得更远。请围绕\"竞争与合作\"写一篇文章。","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":1,"tags":["社会关系","二元思辨"]},
-  {"id":"q38","text":"以\"坚持\"为题写一篇文章。","source":"经典命题","genre":"argumentative","speculativeType":"single","difficulty":1,"tags":["个人品质","一元思辨"]},
-  {"id":"q39","text":"有人说，自信是我能行；也有人说，真正的自信是不需要向任何人证明。请就\"自信\"写一篇文章。","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["自信","自我认知","二元思辨"]},
-  {"id":"q40","text":"有人说，最好的教育是因材施教；也有人说，教育首先要培养共通的人性。你怎么看？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":3,"tags":["教育","个体与共性","二元思辨"]},
-  {"id":"q41","text":"有人说，距离产生美；也有人说，距离产生隔阂。请就\"距离\"写一篇文章。","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":1,"tags":["距离","人际关系","二元思辨"]},
-  {"id":"q42","text":"有人说，规则是对自由的限制；也有人说，规则是自由的保障。你怎么看？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["规则与自由","社会秩序","二元思辨"]},
-  {"id":"q43","text":"有人说，善良需要锋芒；也有人说，善良本身就是力量。你怎么看？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["善良","道德选择","二元思辨"]},
-  {"id":"q44","text":"有人说，批评使人进步；也有人说，过多的批评扼杀创造力。你怎么看？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":1,"tags":["批评与鼓励","教育方式","二元思辨"]},
-  {"id":"q45","text":"以\"沉默\"为题写一篇文章。","source":"经典命题","genre":"argumentative","speculativeType":"single","difficulty":2,"tags":["表达与沉默","人性","一元思辨"]},
-  {"id":"q46","text":"你说，人终其一生都活在别人的眼光里；也有人说，最大的自由是做自己。请围绕\"自我与他人的目光\"这一主题写一篇文章。","source":"原创精选","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["自我与他人","自由","身份认同"]},
-  {"id":"q47","text":"以\"我是谁\"为题写一篇文章。","source":"原创精选","genre":"argumentative","speculativeType":"single","difficulty":3,"tags":["自我认知","身份认同","存在"]},
-  {"id":"q48","text":"有人说，知识和智慧是两回事；也有人说，没有知识的智慧是空中楼阁。你怎么看？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":2,"tags":["知识与智慧","概念辨析","二元思辨"]},
-  {"id":"q49","text":"有人说，幽默是智慧的盈余；也有人说，幽默是疼痛的自我麻醉。你怎么看？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":3,"tags":["幽默","情感表达","二元思辨"]},
-  {"id":"q50","text":"有人说，成长是不断地告别；也有人说，成长是不断地相遇。你怎么理解？","source":"经典命题","genre":"argumentative","speculativeType":"binary","difficulty":1,"tags":["成长","人生体验","二元思辨"]}
+  {
+    "id": "q1",
+    "text": "随着互联网的普及、人工智能的应用，越来越多的问题能很快得到答案。那么，我们的问题是否会越来越少？",
+    "source": "2024新课标I卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "科技与思考",
+      "问题意识",
+      "二元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q2",
+    "text": "每个人都要学习与他人相处。有时，我们为避免冲突而不愿表达自己的想法。其实，坦诚交流才有可能迎来真正的相遇。",
+    "source": "2024全国甲卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "人际交流",
+      "真诚",
+      "一元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q3",
+    "text": "长久以来，人们只能看到月球固定朝向地球的一面，\"嫦娥四号\"揭开了月背的神秘面纱；随着\"天问一号\"飞离地球，航天人的目光投向更远的深空。正如人类的太空之旅，我们每个人也都在不断抵达未知之境。",
+    "source": "2024新课标II卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "探索",
+      "未知",
+      "一元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q4",
+    "text": "人们因技术发展得以更好地掌控时间，但也有人因此成了时间的仆人。",
+    "source": "2023全国甲卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "技术与时间",
+      "异化",
+      "二元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q5",
+    "text": "吹灭别人的灯，并不会让自己更加光明；阻挡别人的路，也不会让自己行得更远。\"一花独放不是春，百花齐放春满园。\"如果世界上只有一种花朵，就算这种花朵再美，那也是单调的。",
+    "source": "2023全国乙卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "合作与竞争",
+      "多元",
+      "二元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q6",
+    "text": "好的故事，可以帮我们更好地表达和沟通，可以触动心灵、启迪智慧；好的故事，可以改变一个人的命运，可以展现一个民族的形象……故事是有力量的。",
+    "source": "2023新课标I卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 1,
+    "tags": [
+      "故事",
+      "叙事力量",
+      "一元思辨"
+    ],
+    "theme": "人文"
+  },
+  {
+    "id": "q7",
+    "text": "\"安静一下不被打扰\"的想法，在当代青少年中也不鲜见。青少年在学习、生活中，有时希望有一个自己的空间，放松，沉淀，成长。",
+    "source": "2023新课标II卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "成长",
+      "自我空间",
+      "一元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q8",
+    "text": "《红楼梦》中众人给匾额题名，或直接移用，或借鉴化用，或根据情境独创，产生了不同的艺术效果。这个现象也能在更广泛的领域给人以启示。",
+    "source": "2022全国甲卷",
+    "genre": "argumentative",
+    "speculativeType": "ternary",
+    "difficulty": 3,
+    "tags": [
+      "移用化用独创",
+      "三元思辨",
+      "学习与创新"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q9",
+    "text": "\"本手、妙手、俗手\"是围棋的三个术语。本手是合乎棋理的正规下法，妙手是出人意料的精妙下法，俗手是貌似合理而从全局看受损的下法。对本手理解深刻，才可能出现妙手；否则难免下出俗手。",
+    "source": "2022新高考I卷",
+    "genre": "argumentative",
+    "speculativeType": "ternary",
+    "difficulty": 3,
+    "tags": [
+      "本手妙手俗手",
+      "基础与创造",
+      "三元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q10",
+    "text": "中国共产主义青年团成立100周年之际，一组在不同行业奋发有为的人物——他们选择了自己热爱的行业，也选择了事业创新发展的方向，展示出开启未来的力量。请以\"选择·创造·未来\"为主题写一篇文章。",
+    "source": "2022新高考II卷",
+    "genre": "argumentative",
+    "speculativeType": "ternary",
+    "difficulty": 2,
+    "tags": [
+      "选择",
+      "创造",
+      "未来",
+      "三元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q11",
+    "text": "中国共产党走过百年历程。在党团结带领人民进行的伟大斗争中孕育了革命文化和社会主义先进文化。我们处在一个大有可为的时代……请以\"可为与有为\"为主题写一篇文章。",
+    "source": "2021全国甲卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "可为与有为",
+      "时代责任",
+      "二元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q12",
+    "text": "汉代扬雄以射箭为喻：\"修身以为弓，矫思以为矢，立义以为的，奠而后发，发必中矣。\"这能给追求理想的当代青年以启示。请结合你对自身发展的思考写一篇文章。",
+    "source": "2021全国乙卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "理想",
+      "个人修养",
+      "一元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q13",
+    "text": "1917年4月，毛泽东在《新青年》发表《体育之研究》，论及\"体育之效\"时指出：\"生而强者不必自喜也，生而弱者不必自悲也。吾生而弱乎，或者天之诱我以至于强，未可知也\"。",
+    "source": "2021新高考I卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "强与弱",
+      "变化发展",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q14",
+    "text": "阅读关于\"人\"字描红的漫画材料——用毛笔蘸墨在红模子上描着写字，有藏而不露、不偏不倚、缓缓出头等特征。请整体把握漫画内容和寓意写一篇文章。",
+    "source": "2021新高考II卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "做人",
+      "传统文化",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q15",
+    "text": "春秋时期，齐桓公、管仲和鲍叔三人之间的故事。班级读书会围绕上述材料展开讨论。齐桓公、管仲和鲍叔三人，你对哪个感触最深？请结合你的感受和思考写一篇发言稿。",
+    "source": "2020全国I卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "历史人物",
+      "识人用人",
+      "一元思辨"
+    ],
+    "theme": "人文"
+  },
+  {
+    "id": "q16",
+    "text": "墨子说：\"视人之国，若视其国；视人之家，若视其家；视人之身，若视其身。\"英国诗人约翰·多恩说：\"没有人是自成一体、与世隔绝的孤岛。\"请以\"携手同一世界，青年共创未来\"为主题写一篇演讲稿。",
+    "source": "2020全国II卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "人类命运",
+      "合作",
+      "一元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q17",
+    "text": "在人生的旅程中，我们需要寻找各种\"镜子\"、不断绘制\"自画像\"来审视自我。毕业前，学校请你给即将入学的高一新生写一封信，主题是\"如何为自己画好像\"。",
+    "source": "2020全国III卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "自我认知",
+      "成长",
+      "一元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q18",
+    "text": "面对突发的新冠肺炎疫情，防疫拉开了人们的距离——居家隔离、保持社交距离；抗疫密切了人们的联系——守望相助、众志成城。请以\"疫情中的距离与联系\"为主题写一篇文章。",
+    "source": "2020新高考I卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "距离与联系",
+      "社会",
+      "二元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q19",
+    "text": "读万卷书，行万里路。电视台邀请你客串《中华地名》主持人，请以\"带你走近_______\"为题写一篇主持词。",
+    "source": "2020新高考II卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 1,
+    "tags": [
+      "地域文化",
+      "体验",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q20",
+    "text": "有人说，现代人的生活越来越便捷了；也有人说，便捷让生活失去了深度。你怎么看？",
+    "source": "2025八省联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "科技与生活",
+      "现代性",
+      "二元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q21",
+    "text": "\"将有作则思知止以安人\"\"譬如为山，未成一篑，止，吾止也\"\"大学之道，在止于至善\"\"陈力就列，不能者止\"——古代经典中多次出现\"止\"字，引发你怎样的联想与思考？",
+    "source": "2025 T8联考",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "知止",
+      "经典思辨",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q22",
+    "text": "在日常生活中，信息不足往往可能导致认知偏差。随着时代和科技的发展，人们获取到的信息越来越丰富。那么，我们的认知是否会因此越来越准确？",
+    "source": "2025湖北T8联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "信息与认知",
+      "技术批判",
+      "二元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q23",
+    "text": "尼采说：\"人跟树是一样的，越是向往高处的阳光，它的根就越要伸进黑暗的地底。\"这意味着个人成长不仅要\"向上\"，\"向下\"的努力同样至关重要。你怎么理解？",
+    "source": "2024湖北智学联盟",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "向上与向下",
+      "个人成长",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q24",
+    "text": "\"君子不立危墙之下\"提示避险自保；孟子却说\"道之所在，虽千万人，吾往矣\"呼唤挺身而出。对这两种态度，你怎么看？",
+    "source": "2024湖北12月联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "避险与赴道",
+      "价值选择",
+      "二元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q25",
+    "text": "\"三思而后行，谋定而后动\"；但费尽思量的人，往往没有时间行动。对此你怎么理解？",
+    "source": "2024南京七校联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "思与行",
+      "行动力",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q26",
+    "text": "有人说，人要与自己和解，唯有接纳自己才能超越自己；也有人说人要与自己死磕，所谓成长与优秀不过是与自己死磕罢了。是放自己一马还是逼自己一把？",
+    "source": "2024江苏高三联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "和解与死磕",
+      "自我",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q27",
+    "text": "ChatGPT、Sora等AI工具冲击下，\"如果你要成为编剧，要能写出构思更为巧妙的剧本；如果你要成为模特，要有和他人截然不同的气质\"——AI时代，我们当何去何从？",
+    "source": "2024 T8联考",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "AI",
+      "人的独特性",
+      "一元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q28",
+    "text": "许倬云应对精神危机的方案是\"不去争，不去抢，往里走，安顿自己\"；但现实中很多人却是\"向外求、向外索取\"。你怎么看？",
+    "source": "2024贵阳一中月考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "往里走与向外求",
+      "精神生活",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q29",
+    "text": "人类模仿动物发明飞机、雷达，也存在邯郸学步、东施效颦；小学生用AI改写鲁迅文章；图灵说\"机器的思考是编程形成的，而人类的思考靠的是自主意识\"。以上材料引发了你对\"模仿与创新\"怎样的思考？",
+    "source": "2024东北三省联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "模仿与创新",
+      "AI",
+      "二元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q30",
+    "text": "近几届奥运会，观众对金牌榜没有那么深的执念了，对输赢没有那么多苛求了，对运动员更包容了。尤其是年轻观众，他们从记事起就拥有\"平视世界\"的视角。你怎么理解这种\"平视\"？",
+    "source": "2024浙江新阵地联盟",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "平视世界",
+      "自信",
+      "一元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q31",
+    "text": "孔子曰\"道之不行，已知之矣\"，却仍不放弃，被称为\"知其不可而为之\"。身处当今纷繁复杂的世界，我们面对所有问题，都需要\"知其不可而为之\"吗？",
+    "source": "2024广东S6联盟",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "知其不可而为之",
+      "理性与执着",
+      "二元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q32",
+    "text": "《乡土中国》中\"落叶归根\"的说法深入人心。但有人认为：\"时代在进步，不走出去便会被时代所淘汰，所谓落叶归根，真是越来越难了。\"你怎么看？",
+    "source": "2024广东12月联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "传统与现代",
+      "乡土",
+      "二元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q33",
+    "text": "有人说，传统是创新的包袱；也有人说，传统是创新的根基。你怎么看？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "传承与创新",
+      "文化",
+      "二元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q34",
+    "text": "有人说，人生最重要的是结果；也有人说，过程比结果更有意义。你怎么看？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "过程与结果",
+      "人生意义",
+      "二元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q35",
+    "text": "\"平凡\"不等于\"平庸\"。前者是一种姿态，后者是一种放弃。你怎么理解？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "概念辨析",
+      "平凡与平庸",
+      "价值判断"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q36",
+    "text": "有人说，自由是想做什么就做什么；也有人说，真正的自由是有能力不做不想做的事。请围绕\"自由\"写一篇文章。",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "自由",
+      "概念辨析",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q37",
+    "text": "有人说，竞争让人进步；也有人说，合作让人类走得更远。请围绕\"竞争与合作\"写一篇文章。",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "社会关系",
+      "二元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q38",
+    "text": "以\"坚持\"为题写一篇文章。",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 1,
+    "tags": [
+      "个人品质",
+      "一元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q39",
+    "text": "有人说，自信是我能行；也有人说，真正的自信是不需要向任何人证明。请就\"自信\"写一篇文章。",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "自信",
+      "自我认知",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q40",
+    "text": "有人说，最好的教育是因材施教；也有人说，教育首先要培养共通的人性。你怎么看？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "教育",
+      "个体与共性",
+      "二元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q41",
+    "text": "有人说，距离产生美；也有人说，距离产生隔阂。请就\"距离\"写一篇文章。",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "距离",
+      "人际关系",
+      "二元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q42",
+    "text": "有人说，规则是对自由的限制；也有人说，规则是自由的保障。你怎么看？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "规则与自由",
+      "社会秩序",
+      "二元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q43",
+    "text": "有人说，善良需要锋芒；也有人说，善良本身就是力量。你怎么看？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "善良",
+      "道德选择",
+      "二元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q44",
+    "text": "有人说，批评使人进步；也有人说，过多的批评扼杀创造力。你怎么看？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "批评与鼓励",
+      "教育方式",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q45",
+    "text": "以\"沉默\"为题写一篇文章。",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "表达与沉默",
+      "人性",
+      "一元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q46",
+    "text": "你说，人终其一生都活在别人的眼光里；也有人说，最大的自由是做自己。请围绕\"自我与他人的目光\"这一主题写一篇文章。",
+    "source": "原创精选",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "自我与他人",
+      "自由",
+      "身份认同"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q47",
+    "text": "以\"我是谁\"为题写一篇文章。",
+    "source": "原创精选",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "自我认知",
+      "身份认同",
+      "存在"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q48",
+    "text": "有人说，知识和智慧是两回事；也有人说，没有知识的智慧是空中楼阁。你怎么看？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "知识与智慧",
+      "概念辨析",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q49",
+    "text": "有人说，幽默是智慧的盈余；也有人说，幽默是疼痛的自我麻醉。你怎么看？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "幽默",
+      "情感表达",
+      "二元思辨"
+    ],
+    "theme": "人文"
+  },
+  {
+    "id": "q50",
+    "text": "有人说，成长是不断地告别；也有人说，成长是不断地相遇。你怎么理解？",
+    "source": "经典命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "成长",
+      "人生体验",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q51",
+    "text": "生活中，人们常用认可度判别事物，区分高下。请写一篇文章，谈谈你对\"认可度\"的认识和思考。",
+    "source": "2024上海卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "认可度",
+      "价值判断",
+      "思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q52",
+    "text": "在缤纷的世界中，无论是个人、群体还是国家，都会面对别人对我们的定义。我们要认真对待\"被定义\"，明辨是非，去芜存真；也要勇于通过\"自定义\"来塑造自我，彰显风华。",
+    "source": "2024天津卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "自定义",
+      "被定义",
+      "自我",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q53",
+    "text": "习近平总书记指出：构建现代化产业体系，既要有雄心壮志，积极抢位发展，又要立足实际，善于错位发展。请据此写一篇文章，对青年成才的启示。",
+    "source": "模考命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "抢位",
+      "错位",
+      "成才",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q54",
+    "text": "世上许多重要的转折是在意想不到时发生的，这是否意味着人对事物发展进程无能为力？",
+    "source": "2020上海卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "转折",
+      "命运",
+      "个体",
+      "二元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q55",
+    "text": "同声相应，同气相求。人们总是关注自己喜爱的人和事，久而久之，就会被同类信息所环绕、所塑造。智能互联网时代，这种环绕更加紧密，这种塑造更加可感。",
+    "source": "2020江苏卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "信息茧房",
+      "算法",
+      "自我塑造",
+      "一元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q56",
+    "text": "物各有性，水至淡，盐得味。水加水还是水，盐加盐还是盐。酸甜苦辣咸，五味调和，共存相生，百味纷呈。物如此，事犹是，人亦然。",
+    "source": "江苏卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "多元",
+      "共存",
+      "个性",
+      "一元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q57",
+    "text": "很多同学认为青春应当奋力拼搏，不留遗憾，没有遗憾的青春才完美；也有不少同学认为，无遗憾不青春，遗憾才是青年继续前行的动力。",
+    "source": "模考命题",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "遗憾",
+      "青春",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q58",
+    "text": "穷者而后工也。穷困磨砺和锻炼了人的坚强意志，历尽千帆，行稳致远。请以\"意志力\"为话题写一篇文章。",
+    "source": "模考命题",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "意志力",
+      "逆境",
+      "成长",
+      "一元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q59",
+    "text": "智商让我们认识世界，情商让我们经营关系，逆商让我们面对挫折。三商兼修，方能行稳致远。你怎么看？",
+    "source": "模考命题",
+    "genre": "argumentative",
+    "speculativeType": "ternary",
+    "difficulty": 2,
+    "tags": [
+      "智商",
+      "情商",
+      "逆商",
+      "三元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q60",
+    "text": "春秋时期，齐桓公、管仲和鲍叔三人之间的故事。齐桓公、管仲和鲍叔三人，你对哪个感触最深？",
+    "source": "2020全国I卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "识人用人",
+      "历史人物",
+      "一元思辨"
+    ],
+    "theme": "人文"
+  },
+  {
+    "id": "q61",
+    "text": "世界正处于百年未有之大变局。当今世界正经历着新一轮大发展、大变革、大调整，人类文明发展面临的新机遇、新挑战层出不穷，不确定、不稳定因素明显增多。中国是变局中最大的自变量。中华文化不断发展，中华民族正在走向伟大复兴；但是中国也面临新的挑战，中国外部安全环境风险和隐患增多，内部将从轻度老龄化迈入中度老龄化，面临核心科学技术引进受限等难题。纵使时代变迁，但是总有一些东西亘古不变，值得我们坚守，比如勤劳善良、温厚朴实的美好品质，不屈不挠、迎难而上的勇气，命运与共、和平友好的道义、担当……面对世界百年难遇的时代大变局，中国应如何应对国内外发生的一系列变化？应如何处理变和不变的关系？请以“应对百年未有之大变局的变与不变”为主题，写一篇文章。",
+    "source": "模考命题·叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "变与不变",
+      "时代大变局",
+      "家国情怀",
+      "二元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q62",
+    "text": "“中国面孔”是全球热播纪录片里充满家国情怀的杜甫，是用中医药造福人类荣获诺贝尔奖的屠呦呦，是医务工作者厚重防护服下疲惫的笑脸，是快递小哥在寂静街巷里传送温暖的双手……也是用各种方式共同形塑“中国面孔”的你和我。走过2020年的春天，你对“中国面孔”又有什么新的思考和感悟？请写一篇文章。",
+    "source": "2020天津卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "中国面孔",
+      "家国情怀",
+      "时代精神",
+      "一元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q63",
+    "text": "“上”者上进，“止”者知止，“正”者守正。“上”“止”“正”这三字高度概括了人生的成长历程，包孕着国人从古至今的人生哲学与生命智慧；这三字也与每个人的求学处友、从业等具体生活实践息息相关，深蕴待人处事之道。以上材料对我们颇具启示意义。请结合材料写一篇文章，体现你的感悟与思考。",
+    "source": "2023届绵阳中学高三第四次月考",
+    "genre": "argumentative",
+    "speculativeType": "ternary",
+    "difficulty": 3,
+    "tags": [
+      "上止正",
+      "人生哲学",
+      "三元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q64",
+    "text": "如果你曾仔细凝视过四季的树便会发现：春夏时蓬勃，就会尽情舒展枝叶，展现生命的旺盛；秋冬时干枯，却作了另一象限的强者，归位内核，向下扎根。以上的材料引发你怎样的思考？请结合你的思考，写一篇议论文。",
+    "source": "2023届天津市和平区高三一模",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "向上与向下",
+      "四季",
+      "生命哲理",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q65",
+    "text": "有人说，生命之河在它的一条岸边享有自由，在另一条岸边就会受到约束。无论是自然界还是人类社会，自由与约束总是相伴相生。我们该如何平衡自由与约束的关系？请写一篇文章，谈谈你的看法。",
+    "source": "叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "自由",
+      "约束",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q66",
+    "text": "你们中间若有人坐了轿子、吹着和煦的风去过千座山，看过千种风景，这样的人我不欣赏：没有一座山是他真正认识的，千种风景也会浮光掠影。我欣赏这样的：他在登山时流过汗，即便只登过一座山，他也做好了去了解所有风景的准备，这就胜过你们对千种风景的一知半解。而我说的山，是指你被荆棘伤过，在山路上跌倒过，搬动石头流过汗，采过上面的花，最后在山顶迎着风呐喊的山。以上材料引发了你怎样的联想和思考？对你的学习和生活有何启示？请写一篇文章。",
+    "source": "叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "过程与结果",
+      "质与量",
+      "体验",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q67",
+    "text": "人心里真的有一片海，一直在翻滚着，而自己的魂灵如果没有一个重重的东西去压住——类似于压舱石的东西，例如信念、理想和爱，等等。只要某一刻某一个小小的情绪的浪过来，魂灵就会被这么打翻，沉入那海底去了。（蔡崇达《命运》）以上材料对我们颇具启示意义。请结合材料写一篇文章，体现你的感悟与思考。",
+    "source": "叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "信念",
+      "压舱石",
+      "独立精神",
+      "一元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q68",
+    "text": "互联网给我们制造了一个信息海洋，精准的算法推荐可以精准对接需求和最大化利用资源，却编织出了一个个“信息茧房”，让每个人只看到自己想看的，听到自己想听的，宛如回音壁一样不断地重复那些悦耳的声音。这种舒适会让人成为“信息偏食者”，让视野变窄，带来偏见。孔子曾说：“君子和而不同。”“和”是有差别的、多样性统一，君子能了解差异、尊重差别，又能保持思想的自由和人格的独立。以上材料对我们颇具启示意义。请结合材料写一篇文章，体现你的感悟与思考。",
+    "source": "叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "信息茧房",
+      "理性",
+      "和而不同",
+      "二元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q69",
+    "text": "随着年龄的增长，青少年会逐步走向更广阔的天地，会和更多经历不同、个性各异的人相遇。这时，同理心强的人，更能在差异中拓宽视野，结交朋友，丰富自己。这不仅关乎个人成长，对促进社会和谐与文化交流，也有重要意义。以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "同理心",
+      "差异",
+      "成长",
+      "一元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q70",
+    "text": "“作之不止，乃成君子”，出自《资治通鉴》。史载，春秋时期魏国国君评价鲁仲连时，认为其表里不一，所谓的君子形象是装出来的。大臣孔斌发表了不同的意见：“作之不止，乃成君子；作之不变，习与体成，则自然也。”意思是说，不管一个人做事是主动还是被动，只要所做的是对的、只要不停地坚持下去，就能习惯成自然，离君子的标准越来越近。根据以上材料，选取角度，自拟题目，写一篇文章。",
+    "source": "叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "坚持",
+      "习惯",
+      "君子",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q71",
+    "text": "“有意思”指有趣味、有情趣，不单调、不枯燥。“有意义”指有思想、有道理、有价值。生活中我们经常听到关于二者的比较或争论。妈妈对看动画片的儿子说，别看《熊出没》了，有什么意义？儿子说，有意思呀。谈到今后的职业，有人说，今后要搞科研，因为“有意义”，有人却说“没意思”。以上材料对我们颇具启示意义。请结合材料、联系现实写一篇文章，体现你对“有意思”和“有意义”的感悟与思考。",
+    "source": "叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "有意思",
+      "有意义",
+      "价值选择",
+      "二元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q72",
+    "text": "有人把得与失看成终点，有人把得与失看成起点，有人把得与失看成过程。对此，你有怎样的体验与思考？写一篇文章，谈谈自己的看法。",
+    "source": "2021浙江卷",
+    "genre": "argumentative",
+    "speculativeType": "ternary",
+    "difficulty": 3,
+    "tags": [
+      "得与失",
+      "过程与终点",
+      "三元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q73",
+    "text": "“韧性”是指物体柔软坚实、不易折断的性质。中华文明历经风雨，绵延至今，体现出“韧”的精神。回顾漫长的中国历史，每逢关键时刻，这种文明的韧性体现得尤为明显。中华民族的伟大复兴，更需要激发出这种文明的韧性。请以“文明的韧性”为题，写一篇议论文。",
+    "source": "2019北京卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "文明",
+      "韧性",
+      "中华文化",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q74",
+    "text": "近几届奥运会，观众对金牌榜没有那么深的执念了，对输赢没有那么多苛求了，对运动员更包容了。尤其是年轻观众，他们从记事起就拥有“平视世界”的视角。你怎么理解这种“平视”？",
+    "source": "2024浙江新阵地联盟",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "平视世界",
+      "自信",
+      "一元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q75",
+    "text": "许倬云应对精神危机的方案是“不去争，不去抢，往里走，安顿自己”；但现实中很多人却是“向外求、向外索取”。你怎么看？",
+    "source": "2024贵阳一中月考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "往里走与向外求",
+      "精神生活",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q76",
+    "text": "穷者而后工也。穷困磨砺和锻炼了人的坚强意志，历尽千帆，行稳致远。请以“意志力”为话题写一篇文章。",
+    "source": "叁月聚粮题库",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "意志力",
+      "逆境",
+      "成长",
+      "一元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q77",
+    "text": "阅读下面的材料，根据要求写作。1917年4月，毛泽东在《新青年》发表《体育之研究》一文，其中论及“体育之效”时指出：人的身体会天天变化。目不明可以明，耳不聪可以聪。生而强者如果滥用其强，即使是至强者，最终也许会转为至弱；而弱者如果勤自锻炼，增益其所不能，久之也会变而为强。因此，“生而强者不必自喜也，生而弱者不必自悲也。吾生而弱乎，或者天之诱我以至于强，未可知也”。以上论述具有启示意义。请结合材料写一篇文章，体现你的感悟与思考。",
+    "source": "2021新高考I卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "强与弱",
+      "变化发展",
+      "体育",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q78",
+    "text": "世上许多重要的转折是在意想不到时发生的，这是否意味着人对事物发展进程无能为力？请写一篇文章，谈谈你对这个问题的认识和思考。",
+    "source": "2020上海卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "转折",
+      "命运",
+      "人的能动性",
+      "二元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q79",
+    "text": "同声相应，同气相求。人们总是关注自己喜爱的人和事，久而久之，就会被同类信息所环绕、所塑造。智能互联网时代，这种环绕更加紧密，这种塑造更加可感。你未来的样子，也许就开始于当下一次从心所欲的浏览，一串惺惺相惜的点赞，一回情不自禁的分享，一场突如其来的感动。根据以上材料，选取角度，自拟题目，写一篇文章。",
+    "source": "2020江苏卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "信息茧房",
+      "算法",
+      "自我塑造",
+      "一元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q80",
+    "text": "物各有性，水至淡，盐得味。水加水还是水，盐加盐还是盐。酸甜苦辣咸，五味调和，共存相生，百味纷呈。物如此，事犹是，人亦然。根据以上材料，选取角度，自拟题目，写一篇文章。",
+    "source": "2019江苏卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "多元",
+      "共存",
+      "个性",
+      "一元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q81",
+    "text": "每个人都有自己的人生坐标，也有对未来的美好期望。家庭可能对我们有不同的预期，社会也可能会赋予我们别样的角色。在不断变化的现实生活中，个人与家庭、社会之间的落差或错位难免会产生。对此，你有怎样的体验与思考？写一篇文章，谈谈自己的看法。",
+    "source": "2020浙江卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "个人与社会",
+      "落差与错位",
+      "自我定位",
+      "二元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q82",
+    "text": "有人说，经过时间的沉淀，事物的价值才能被人们认识；也有人认为不尽如此。你怎么看？请写一篇文章，谈谈你的思考。",
+    "source": "2021上海卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "时间",
+      "价值",
+      "沉淀",
+      "二元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q83",
+    "text": "小时候人们喜欢发问，长大后往往看重结论。对此，有人感到担忧，有人觉得正常，你有怎样的思考？请写一篇文章，谈谈你的认识。",
+    "source": "2022上海卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "发问与结论",
+      "成长",
+      "好奇心",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q84",
+    "text": "一个人乐意去探索陌生世界，仅仅是因为好奇心吗？请写一篇文章，谈谈你对这个问题的认识和思考。",
+    "source": "2023上海卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "探索",
+      "好奇心",
+      "驱动力",
+      "一元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q85",
+    "text": "有人说，作家写作时心里要装着读者，多倾听读者的呼声。另一种看法是：作家写作时应该坚持自己的想法，不为读者所左右。假如你是创造生活的“作家”，你的生活就成了一部“作品”，那么你将如何对待你的“读者”？根据材料写一篇文章，谈谈你的看法。",
+    "source": "2019浙江卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "自我与他人",
+      "创作",
+      "独立性",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q86",
+    "text": "俗话说“有话则长，无话则短”，也有人说“有话则短，无话则长”，无话的时候也要说出自己的见解。在这个时代，是彰显个性还是提倡创新？以此为题材，写一篇文章。",
+    "source": "2016江苏卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "个性",
+      "创新",
+      "表达",
+      "二元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q87",
+    "text": "网上购物，视频聊天，线上娱乐，已成为当下很多人生活中不可或缺的一部分。业内人士指出，不远的将来，我们只需在家里安装VR（虚拟现实）设备，便可以足不出户地穿梭于各个虚拟场景：时而在商店的衣帽间里试穿新衣，时而在足球场上观看比赛，时而化身为新闻事件的“现场目击者”……当虚拟世界中的“虚拟”越来越成为现实世界中的“现实”时，是选择拥抱这个新世界，还是刻意远离，或者与它保持适当距离？对材料提出的问题，你有怎样的思考？写一篇论述类文章。",
+    "source": "2016浙江卷",
+    "genre": "argumentative",
+    "speculativeType": "ternary",
+    "difficulty": 3,
+    "tags": [
+      "虚拟与现实",
+      "科技",
+      "选择",
+      "三元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q88",
+    "text": "人的心中总有一些坚硬的东西，也有一些柔软的东西，如何对待它们，将关系到能否造就和谐的自我。根据以下材料，自选角度，自拟题目，写一篇文章。",
+    "source": "2015上海卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "坚硬与柔软",
+      "和谐自我",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q89",
+    "text": "随着现代社会的发展，人们的生活更容易进入大众视野，评价他人生活变得越来越常见，这些评价对个人和社会的影响也越来越大。人们对“评价他人的生活”这种现象的看法不尽相同，请写一篇文章，谈谈你对这的理解。",
+    "source": "2016上海卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "评价他人",
+      "社会",
+      "自我",
+      "一元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q90",
+    "text": "预测，是指预先推测。生活充满变数，有的人乐于接受对生活的预测，有的人则不以为然。请写一篇文章，谈谈你的思考。",
+    "source": "2017上海卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "预测",
+      "变数",
+      "生活态度",
+      "二元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q91",
+    "text": "车有各种类型，车来车往，车传递着真情，承载着时代的变迁，折射人世的变化，道出人生的哲理。请以此写一篇文章，题目自拟。",
+    "source": "2017江苏卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "车",
+      "时代变迁",
+      "人生哲理",
+      "一元思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q92",
+    "text": "有位作家说，人要读三本大书，一本是“有字之书”，一本是“无字之书”，一本“心灵之书”，对此你有怎样的思考？请对作家的观点加以评说。",
+    "source": "2017浙江卷",
+    "genre": "argumentative",
+    "speculativeType": "ternary",
+    "difficulty": 3,
+    "tags": [
+      "有字之书",
+      "无字之书",
+      "心灵之书",
+      "三元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q93",
+    "text": "生活中，人们不仅关注自身的需要，也时常渴望被他人需要，以体现自己的价值。这种“被需要”的心态普遍存在，对此你有怎样的认识？请写一篇文章，谈谈你的思考。",
+    "source": "2018上海卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "被需要",
+      "价值",
+      "自我实现",
+      "一元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q94",
+    "text": "生活中有不同的“器”。器能盛纳万物，美的形制与好的内容相得益彰；器能助人成事，有利器方成匠心之作；有一种“器”叫器量，兼容并包，彰显才识气度；有一种“器”叫国之重器，肩负荣光，成就梦想……请根据以上材料写一篇文章。",
+    "source": "2018天津卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "器",
+      "内涵",
+      "传统文化",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q95",
+    "text": "花自语，鸟有语，生活处处有语言。生命也可以用语言来解读，雕塑、基因……都可以用语言来传递。语言丰富生活，语言诠释生命，语言传承文明。请根据所给材料作文。",
+    "source": "2018江苏卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "语言",
+      "生命",
+      "文明",
+      "一元思辨"
+    ],
+    "theme": "人文"
+  },
+  {
+    "id": "q96",
+    "text": "烟火气是家人团坐，灯火可亲；烟火气是国泰民丰，岁月安好；烟火气是温情，是祥和，需要珍惜和守护，也需要奉献和担当。寻常烟火，就是最美的风景。你对这段话有怎样的思考和感悟？请结合自身体验，写一篇文章。",
+    "source": "2022天津卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 1,
+    "tags": [
+      "烟火气",
+      "生活",
+      "温暖",
+      "一元思辨"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q97",
+    "text": "有人说，人要与自己和解，唯有接纳自己才能超越自己；也有人说人要与自己死磕，所谓成长与优秀不过是与自己死磕罢了。是放自己一马还是逼自己一把？",
+    "source": "2024江苏高三联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "和解与死磕",
+      "自我成长",
+      "二元思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q98",
+    "text": "人类模仿动物发明飞机、雷达，也存在邯郸学步、东施效颦；小学生用AI改写鲁迅文章；图灵说“机器的思考是编程形成的，而人类的思考靠的是自主意识”。以上材料引发了你对“模仿与创新”怎样的思考？",
+    "source": "2024东北三省联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "模仿与创新",
+      "AI",
+      "二元思辨"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q99",
+    "text": "孔子曰“道之不行，已知之矣”，却仍不放弃，被称为“知其不可而为之”。身处当今纷繁复杂的世界，我们面对所有问题，都需要“知其不可而为之”吗？",
+    "source": "2024广东S6联盟",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 3,
+    "tags": [
+      "知其不可而为之",
+      "理性与执着",
+      "二元思辨"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q100",
+    "text": "《乡土中国》中“落叶归根”的说法深入人心。但有人认为：“时代在进步，不走出去便会被时代所淘汰，所谓落叶归根，真是越来越难了。”你怎么看？",
+    "source": "2024广东12月联考",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "传统与现代",
+      "乡土",
+      "二元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q101",
+    "text": "倾听了不同国家的音乐，接触了不同风格的异域音调，我由此对音乐的“中国味”有了更深刻的感受，从而更有意识地去寻找“中国味”。这段话可以启发人们如何去认识事物。请写一篇文章，谈谈你对上述材料的思考和感悟。",
+    "source": "2019上海卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "中国味",
+      "文化认同",
+      "认识事物",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q102",
+    "text": "湖南大地，历史上孕育过务实、知行合一、经世致用等思想……作为学子，站在人生新起点，你有怎样的体验和思考？请结合材料写一篇文章。",
+    "source": "2018浙江卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "地域文化",
+      "精神传承",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q103",
+    "text": "近年来社会上流行一个词——“范儿”，并派生出“中国范儿”“文艺范儿”“潮范儿”“有范儿”等一系列词语。“范儿”多指好的“风格”“做派”，近似于“有气质”“有情调”“有品位”的意思。一个民族有一个民族的“范儿”，一个时代有一个时代的“范儿”，不同职业有不同职业的“范儿”，一个人也可能有一个人的“范儿”……请根据上面的材料，结合你的生活体验与思考写一篇文章。",
+    "source": "2015天津卷",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 1,
+    "tags": [
+      "范儿",
+      "风格",
+      "文化",
+      "一元思辨"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q104",
+    "text": "泉水在地下蓄积。一旦有机会，它便骄傲地涌出地面，成为众人瞩目的喷泉，继而汇成溪流，奔向远方。但人们对地下的泉水鲜有关注，其实，正是因为有地下那些默默不语的泉水的不断聚集，才有地上那一股股清泉的不停奔涌。根据材料写一篇文章。",
+    "source": "2015湖北卷",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "蓄积与爆发",
+      "默默耕耘",
+      "二元思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q101",
+    "text": "在加速发展的时代背景下，人们时常感到未来充满了不确定性。有人认为，面对不确定的未来，最好的方式是做好当下的事情，保持积极的心态；也有人认为，未来虽不确定，但可以通过规划和准备来应对。\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "深圳市教育科学研究院 葛福安（高中语文教研员、高考模拟命题团队负责人）",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "思辨",
+      "社会",
+      "创新"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q102",
+    "text": "\"就像饥饿的人扑在面包上\"，可看作对饥饿感的一种描述。在物质产品和精神产品日益丰富的今天，饥饿感的缺乏是一件好事吗？\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "深圳市教育科学研究院 葛福安",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "思辨"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q103",
+    "text": "随着人工智能的发展，AI已经可以生成优美的文字和逼真的图像。有人认为，AI的表达越来越接近人类的情感表达；也有人认为，AI终究无法真正理解人类的情感。\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "华南师范大学文学院 胡家俊（广州市高考语文评卷组副组长）",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "科技",
+      "思辨",
+      "情感",
+      "创新"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q104",
+    "text": "\"日月不失其体，故蔽而复明；江汉不失其源，故穷而复通。\"\n\n在个人成长、社会发展乃至文明演进中，总会出现困顿、挫折，甚至会有风高浪急、惊涛骇浪的考验。然而，日月虽有被遮蔽之时，只要本体未失，终能重放光明；江河即使遭遇险阻，只要源头不竭，终能贯通入海。\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "教育部教育考试院 / eol.cn 教育在线",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "成长",
+      "思辨",
+      "文化",
+      "自我",
+      "社会",
+      "创新"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q105",
+    "text": "每个人都有对世界的想象。科技改造世界时，也改造着我们的想象。有人说，科技的进步拓展了我们的想象空间；也有人说，科技的发达限制了我们的想象空间。\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "上海市教育考试院 / eol.cn 教育在线",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "科技",
+      "思辨",
+      "自我",
+      "社会"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q106",
+    "text": "有人说，人生的意义在于\"托举起\"他人或社会；也有人说，人生的意义在于活出自己的\"淡而有味\"。\n请从这两个观点中选择一个作为主题，写一篇文章。",
+    "source": "北京市朝阳区教育研究中心 / 学科网 gaokzx.com 官方收录 https://www.gaokzx.com/gk/shitiku/137163.html",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "思辨",
+      "自我",
+      "社会",
+      "价值"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q107",
+    "text": "词语是表达思想情感的载体。随着社会的发展，新词语不断涌现，旧词语逐渐消失或改变含义。有人说，词语的变化反映了时代的变迁；也有人说，词语的稳定性承载着文化的传承。\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "教育部教育考试院 / 广东省教育考试院官方发布渠道",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "思辨",
+      "文化",
+      "社会",
+      "情感",
+      "创新"
+    ],
+    "theme": "文化"
+  },
+  {
+    "id": "q108",
+    "text": "随着人工智能技术的快速发展，有人担心AI终将接管人类社会的一切事务，人类将沦为技术的附庸；也有人认为，AI只是工具，人类始终掌握着主导权。\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "上海市静安区教育学院 / 教习网 51jiaoxi.com 官方收录",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "科技",
+      "思辨",
+      "社会",
+      "创新"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q109",
+    "text": "甲说：时间是最公平的，每个人每天都只有24小时。\n乙说：时间是不公平的，同样的时间对不同的人意味着不同的密度和质量。\n\n请结合以上材料，写一篇文章，谈谈你的思考。",
+    "source": "上海市浦东新区教育局教研室 / 教习网 51jiaoxi.com 官方收录",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "思辨",
+      "自我"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q110",
+    "text": "\"性价比\"一词原用于商品消费领域，指商品的性能与价格之比。如今，人们越来越多地将\"性价比\"用于评价生活中的各种选择——专业选择、职业选择，甚至交友择偶。\n\n你对这种泛化的\"性价比\"思维有何看法？请写一篇文章。",
+    "source": "上海市嘉定区教师进修学院 / 教习网 51jiaoxi.com 官方收录",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "价值"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q111",
+    "text": "\"物以稀为贵\"是人们常说的一句谚语。然而在当今这个物质极大丰富的时代，\"稀\"的标准似乎发生了变化——有些曾经稀缺的东西变得触手可及，而有些曾经寻常的东西却变得弥足珍贵。\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "上海市徐汇区教育学院 / 思源教育 siyuanedu.com 官方发布",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "思辨",
+      "社会"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q112",
+    "text": "经历是客观发生的，感知是主观形成的。感知往往不会与经历同步——有时经历过后很久才真正\"感知\"到当时的意义，就像食物发酵一样，需要时间和恰当的条件。\n\n请结合以上材料，写一篇文章。",
+    "source": "上海市静安区教育学院 / 思源教育 siyuanedu.com + 教习网 sjds.net 官方发布",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "价值"
+    ],
+    "theme": "成长"
+  },
+  {
+    "id": "q113",
+    "text": "独立思考的能力被认为是现代人必备的素养之一。然而，在信息爆炸的今天，我们获取信息的渠道越来越多，观点也越来越多。有人认为，在这样的环境中，独立思考变得更加困难；也有人认为，正因为如此，独立思考才显得更加重要。\n\n请写一篇文章，谈谈你的思考。",
+    "source": "上海市虹口区教育学院 / 教习网 51jiaoxi.com 官方收录",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 2,
+    "tags": [
+      "思辨"
+    ],
+    "theme": "自我"
+  },
+  {
+    "id": "q114",
+    "text": "我们常说\"眼见为实\"，但随着技术的发展，\"所见\"未必\"为实\"——深度伪造可以让视频以假乱真，算法推荐可以制造\"信息茧房\"，虚拟现实可以让人沉浸于虚构世界。\n\n在这样一个\"真实\"与\"虚构\"边界日益模糊的时代，我们该如何辨别真伪？请写一篇文章。",
+    "source": "上海市松江区教师进修学院 / 教习网 51jiaoxi.com 官方收录",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "科技",
+      "社会",
+      "创新"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q115",
+    "text": "有人说，经过时间的沉淀，事物的价值才能被人们认识；也有人认为不尽如此。你怎么看？请写一篇文章，谈谈你的思考。",
+    "source": "教育部考试院 / eol.cn 教育在线",
+    "genre": "argumentative",
+    "speculativeType": "binary",
+    "difficulty": 1,
+    "tags": [
+      "思辨",
+      "价值"
+    ],
+    "theme": "价值"
+  },
+  {
+    "id": "q116",
+    "text": "阅读下面的材料，根据要求写作。（60分）\n\n1950年，新中国刚刚成立，百废待兴，朝鲜战争的战火烧到了鸭绿江边，国家安全面临严重威胁。在极不对称、极为艰难的条件下，中国人民志愿军进行了两年零九个月的艰苦卓绝的奋战，赢得了抗美援朝战争的伟大胜利，拼来了山河无恙、家国安宁。\n\n铭记历史，迎接挑战。请结合材料写一篇文章。",
+    "source": "学科网 gaokzx.com 官方发布 https://www.gaokzx.com/c/202102/49343.html",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "社会",
+      "历史",
+      "创新"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q117",
+    "text": "阅读下面的材料，根据要求写作。（60分）\n\n世界乒乓球运动因发展严重不均衡而险些被移出奥运大家庭。这也是一枝独秀的中国队面临的危机。2009年开始，中国主动为他国培养人才，比如，分享训练成果，吸引外籍选手参加乒超联赛，派教练和运动员赴海外执教、打球，等等。中外选手的对决从此变得更精彩了。但外国选手在一些国际大赛中战胜中国队，又引发了国人的担忧。中国乒协主席刘国梁回应：\"帮助对手进步，我们也会变得更强大。再说，国乒的底蕴和厚度是其他国家无法超越的。\"中国乒乓球在推动世界乒乓球运动发展的同时，也让自己始终站在世界之巅。\n\n中国乒乓球的发展之道具有启示意义。请结合材料写一篇文章，谈谈你的感悟与思考。",
+    "source": "深圳市教育科学研究院 葛福安",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 3,
+    "tags": [
+      "思辨",
+      "社会",
+      "价值",
+      "创新"
+    ],
+    "theme": "社会"
+  },
+  {
+    "id": "q118",
+    "text": "阅读下面的材料，根据要求写作。（60分）\n\n清代思想家王夫之有句名言：\"天下有定理而无定法。\"\"定理\"，可理解为不变的原理、规律；\"定法\"，可理解为不变的方法、策略。今天，这句名言仍然值得人们深思。\n\n请结合材料写一篇文章，体现你的感悟与思考。",
+    "source": "深圳市教科院 葛福安 编 | 语文阅刊独家授权发布",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "思辨"
+    ],
+    "theme": "时代"
+  },
+  {
+    "id": "q119",
+    "text": "阅读下面的材料，根据要求写作。（60分）\n\n在语言文字运用II中，两小儿的观点都有貌似充分的理由，使得孔子\"不能决也\"；经过科学分析，我们才得出正确的结论。生活在信息时代，我们必须学会科学分析。\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "深圳市教科院 / 搜狐号\"语文阅刊\"发布",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "思辨",
+      "社会"
+    ],
+    "theme": "科技"
+  },
+  {
+    "id": "q120",
+    "text": "阅读下面的材料，根据要求写作。\n\n他想要给孩子们唱上一段，可是心里直翻腾，开不了口。——老舍《鼓书艺人》\n假如我是一只鸟，我也应该用嘶哑的喉咙歌唱——艾青《我爱这土地》\n我要以带血的手和你们一一拥抱，因为一个民族已经起来——穆旦《赞美》\n\n以上材料引发了你怎样的联想和思考？请写一篇文章。",
+    "source": "山东省语文高级教师季老师 / 济南市\"十佳高级教师\"葛老师联合评阅",
+    "genre": "argumentative",
+    "speculativeType": "single",
+    "difficulty": 2,
+    "tags": [
+      "思辨"
+    ],
+    "theme": "时代"
+  }
 ]
