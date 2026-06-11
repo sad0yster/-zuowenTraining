@@ -1,6 +1,7 @@
 [
   {
     "id": "k1",
+    "depthLevel": 2,
     "concept": "虚无化",
     "hook": "意识不断否定已有的东西，才能保持自由",
     "theme": "self-identity",
@@ -29,6 +30,7 @@
   },
   {
     "id": "k2",
+    "depthLevel": 1,
     "concept": "存在先于本质",
     "hook": "人不是被制造出来的，先存在，再定义自己",
     "theme": "self-identity",
@@ -57,6 +59,7 @@
   },
   {
     "id": "k3",
+    "depthLevel": 3,
     "concept": "内在超越",
     "hook": "先回到内心，再从内心飞向更高的东西",
     "theme": "self-identity",
@@ -85,6 +88,7 @@
   },
   {
     "id": "k4",
+    "depthLevel": 1,
     "concept": "实践智慧",
     "hook": "人生不是解数学题，没有现成公式，只能因地制宜",
     "theme": "reason-sense",
@@ -113,6 +117,7 @@
   },
   {
     "id": "k5",
+    "depthLevel": 2,
     "concept": "绵延",
     "hook": "真正的时间不是钟表上的刻度，而是生命不断流动、创造的过程",
     "theme": "time-life",
@@ -140,6 +145,7 @@
   },
   {
     "id": "k6",
+    "depthLevel": 3,
     "concept": "自性与阴影",
     "hook": "每个人内心深处都有一个更大的自我，也有不愿面对的黑暗面",
     "theme": "self-identity",
@@ -168,6 +174,7 @@
   },
   {
     "id": "k7",
+    "depthLevel": 2,
     "concept": "日神与酒神",
     "hook": "生命需要两种力量：清醒的秩序和狂热的创造",
     "theme": "reason-sense",
@@ -195,6 +202,7 @@
   },
   {
     "id": "k8",
+    "depthLevel": 1,
     "concept": "欲望的本质",
     "hook": "欲望不是缺乏，而是生命力本身的冲动",
     "theme": "desire-drive",
@@ -223,6 +231,7 @@
   },
   {
     "id": "k9",
+    "depthLevel": 3,
     "concept": "身心平行",
     "hook": "身体和心灵是同一枚硬币的两面，彼此映照但不直接因果",
     "theme": "reason-sense",
@@ -248,6 +257,7 @@
   },
   {
     "id": "k10",
+    "depthLevel": 1,
     "concept": "道德自律",
     "hook": "真正的道德不是因为害怕惩罚，而是因为这是你自己给自己立的法",
     "theme": "ethics-relation",
@@ -276,6 +286,7 @@
   },
   {
     "id": "k11",
+    "depthLevel": 2,
     "concept": "他者的面容",
     "hook": "真正的伦理不是规则，而是在他者面前被唤醒的责任",
     "theme": "ethics-relation",
@@ -303,6 +314,7 @@
   },
   {
     "id": "k12",
+    "depthLevel": 3,
     "concept": "梦与醉",
     "hook": "梦境不是虚假的逃避，而是生命力量的另一种展现",
     "theme": "desire-drive",
@@ -330,6 +342,7 @@
   },
   {
     "id": "k13",
+    "depthLevel": 1,
     "concept": "记忆即自我",
     "hook": "记忆不是储存信息的仓库，而是塑造自我的力量",
     "theme": "time-life",
@@ -357,6 +370,7 @@
   },
   {
     "id": "k14",
+    "depthLevel": 3,
     "concept": "好客",
     "hook": "真正的接纳不是施舍，而是无条件地迎接陌生人",
     "theme": "ethics-relation",
@@ -385,6 +399,7 @@
   },
   {
     "id": "k15",
+    "depthLevel": 2,
     "concept": "生命冲动",
     "hook": "生命本身就是一种不断突破、求新求变的力量",
     "theme": "time-life",

@@ -14,6 +14,31 @@ interface ConceptMapProps {
   onBack: () => void;
 }
 
+const DEPTH_LABELS: Record<number, { label: string; cls: string }> = {
+  1: { label: '基础', cls: 'cm-depth-badge--basic' },
+  2: { label: '进阶', cls: 'cm-depth-badge--intermediate' },
+  3: { label: '深层', cls: 'cm-depth-badge--deep' },
+};
+
+function getDepthInfo(level?: number) {
+  if (!level || !DEPTH_LABELS[level]) return null;
+  return DEPTH_LABELS[level];
+}
+
+function getThemeDepthSummary(themeConcepts: KnowledgeConcept[]) {
+  const counts = { 1: 0, 2: 0, 3: 0 };
+  for (const c of themeConcepts) {
+    if (c.depthLevel && counts[c.depthLevel as keyof typeof counts] !== undefined) {
+      counts[c.depthLevel as keyof typeof counts]++;
+    }
+  }
+  const parts: string[] = [];
+  if (counts[1]) parts.push(`${counts[1]} 基础`);
+  if (counts[2]) parts.push(`${counts[2]} 进阶`);
+  if (counts[3]) parts.push(`${counts[3]} 深层`);
+  return parts.length > 0 ? parts.join(' · ') : null;
+}
+
 export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
   const [view, setView] = useState<'themes' | { themeId: string }>('themes');
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -48,7 +73,9 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
         <p className="cm-subtitle">按写作主题组织，帮你建立系统思维框架</p>
         <div className="cm-theme-grid">
           {themes.map(theme => {
-            const count = conceptsByTheme.get(theme.id)?.length ?? 0;
+            const themeConcepts = conceptsByTheme.get(theme.id) ?? [];
+            const count = themeConcepts.length;
+            const depthSummary = getThemeDepthSummary(themeConcepts);
             return (
               <button
                 key={theme.id}
@@ -63,7 +90,10 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
                   <div className="cm-theme-name">{theme.name}</div>
                   <div className="cm-theme-desc">{theme.description}</div>
                 </div>
-                <span className="cm-theme-count">{count} 个概念</span>
+                <div className="cm-theme-meta">
+                  <span className="cm-theme-count">{count} 个概念</span>
+                  {depthSummary && <span className="cm-theme-depth-summary">{depthSummary}</span>}
+                </div>
               </button>
             );
           })}
@@ -95,7 +125,14 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
               onClick={() => setExpandedId(expandedId === concept.id ? null : concept.id)}
             >
               <div className="cm-concept-header-text">
-                <div className="cm-concept-name">{concept.concept}</div>
+                <div className="cm-concept-name-row">
+                  <span className="cm-concept-name">{concept.concept}</span>
+                  {getDepthInfo(concept.depthLevel) && (
+                    <span className={`cm-depth-badge ${getDepthInfo(concept.depthLevel)!.cls}`}>
+                      {getDepthInfo(concept.depthLevel)!.label}
+                    </span>
+                  )}
+                </div>
                 <div className="cm-concept-hook">{concept.hook}</div>
               </div>
               <span className={`cm-chevron ${expandedId === concept.id ? 'cm-chevron--expanded' : ''}`} />
