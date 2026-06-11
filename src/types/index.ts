@@ -1,6 +1,16 @@
 export type EssayGenre = 'argumentative' | 'narrative';
 export type SpeculativeType = 'single' | 'binary' | 'ternary';
 
+export type QuestionTheme =
+  | '科技'
+  | '人文'
+  | '社会'
+  | '成长'
+  | '文化'
+  | '价值'
+  | '自我'
+  | '时代';
+
 export interface Question {
   id: string;
   text: string;
@@ -9,6 +19,7 @@ export interface Question {
   speculativeType: SpeculativeType;
   difficulty: 1 | 2 | 3;
   tags: string[];
+  theme: QuestionTheme;
 }
 
 export type MessageRole = 'user' | 'coach';
@@ -121,10 +132,20 @@ export interface KnowledgeConcept {
   id: string;
   concept: string;
   hook: string;
+  theme: string;
   applicableTo: string[];
   analysisTpl: string;
   examples: ConceptExample[];
   relatedMaterials: string[];
+  depthLevel?: number;
+  references?: string[];
+}
+
+export interface ConceptTheme {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
 }
 
 export type EssayCategory =
