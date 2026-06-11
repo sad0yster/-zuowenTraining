@@ -26,6 +26,111 @@
   border-color: var(--color-accent);
 }
 
+/* 搜索行 */
+.search-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  background: var(--color-bg);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.filter-toggle {
+  padding: 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filter-toggle.active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+/* 筛选面板 */
+.filter-panel {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-section {
+  margin-bottom: 12px;
+}
+
+.filter-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chip.active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+/* 筛选状态 */
+.filter-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.clear-filters {
+  color: var(--color-accent);
+  cursor: pointer;
+  font-size: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* 题目列表 */
 .question-list {
   max-height: 360px;
   overflow-y: auto;
@@ -57,82 +162,9 @@
   letter-spacing: 0.5px;
 }
 
-.recommend-card {
-  border-color: var(--color-accent);
-  border-style: dashed;
-}
-
-.search-filters {
-  margin-bottom: 16px;
-}
-
-.search-input {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: 14px;
-  background: var(--color-bg);
-  box-sizing: border-box;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--color-accent);
-}
-
-.filter-row {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.filter-row select {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: 13px;
-  background: var(--color-bg);
-  cursor: pointer;
-}
-
-.tag-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.tag-btn {
-  padding: 4px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: var(--color-bg);
-  font-size: 12px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.tag-btn.active {
-  background: var(--color-accent);
-  color: #fff;
-  border-color: var(--color-accent);
-}
-
-.filter-status {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 12px;
+.empty-state {
+  padding: 20px;
+  text-align: center;
   color: var(--color-text-secondary);
-}
-
-.clear-filters {
-  color: var(--color-accent);
-  cursor: pointer;
-  font-size: 12px;
-  background: none;
-  border: none;
+  font-size: 14px;
 }
