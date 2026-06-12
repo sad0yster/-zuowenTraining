@@ -10,11 +10,19 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import './App.css';
 
 function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('training');
+  const [activeTab, setActiveTab] = useState<TabId>('materials');
   const [trainingScreen, setTrainingScreen] = useState<'main' | 'essays'>('main');
+  const [practiceTopic, setPracticeTopic] = useState<string | undefined>(undefined);
+  const [practiceQuestionId, setPracticeQuestionId] = useState<string | undefined>(undefined);
+  const [practiceKey, setPracticeKey] = useState(0);
 
   const handleTabChange = useCallback((tab: TabId) => {
     setActiveTab(tab);
+    // Clear practice state when leaving writing tab
+    if (tab !== 'writing') {
+      setPracticeTopic(undefined);
+      setPracticeQuestionId(undefined);
+    }
   }, []);
 
   const renderTrainingContent = () => {
@@ -27,7 +35,10 @@ function App() {
           >
             ← 返回训练
           </button>
-          <EssayLibrary onPractice={() => {
+          <EssayLibrary onPractice={(topic, questionId) => {
+            setPracticeTopic(topic);
+            setPracticeQuestionId(questionId);
+            setPracticeKey(k => k + 1);
             setActiveTab('writing');
             setTrainingScreen('main');
           }} />
@@ -59,7 +70,15 @@ function App() {
         </div>
         <div className="tab-panel" data-active={activeTab === 'writing'} aria-hidden={activeTab !== 'writing'}>
           <ErrorBoundary fallbackTitle="写作模块出了点问题">
-            <WritingDesk />
+            <WritingDesk
+              key={practiceTopic ? `practice-${practiceKey}` : 'default'}
+              initialTopic={practiceTopic}
+              initialQuestionId={practiceQuestionId}
+              onExitPractice={() => {
+                setPracticeTopic(undefined);
+                setPracticeQuestionId(undefined);
+              }}
+            />
           </ErrorBoundary>
         </div>
         <div className="tab-panel" data-active={activeTab === 'me'} aria-hidden={activeTab !== 'me'}>

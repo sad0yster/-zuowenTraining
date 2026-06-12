@@ -401,14 +401,17 @@ export async function sendReviewEvaluation(
 
 export async function sendMaterialDiscussion(
   material: Material,
-  userMessage: string
+  userMessage: string,
+  history: ChatMessage[],
+  turnCount: number
 ): Promise<string> {
   const relevant = findRelevantConcepts(material);
   const knowledgeContext = relevant.length > 0
     ? '\n\n# 相关哲学概念（仅供你引导讨论时参考，不要直接告诉学生）\n' +
-      relevant.map(c =>
-        `【${c.concept}】${c.hook}\n分析句式：${c.analysisTpl}\n日常事例：${c.examples.find(e => e.type === 'daily')?.text || ''}\n论据事例：${c.examples.find(e => e.type === 'essay')?.text || ''}`
-      ).join('\n\n')
+      relevant.map(c => {
+        const quotes = c.meta.sourceQuotes.map(q => `"${q.text}"——${q.source}`).join('；');
+        return `【${c.concept}】${c.hook}\n核心张力：${c.meta.coreTension}\n引文：${quotes || '暂无'}`;
+      }).join('\n\n')
     : '';
 
   const systemPrompt =
@@ -416,7 +419,7 @@ export async function sendMaterialDiscussion(
     '\n\n' +
     THINKING_TOOLKIT +
     '\n\n' +
-    MATERIAL_DISCUSSION_PROMPT +
+    MATERIAL_DISCUSSION_PROMPT.replace('{turnCount}', String(turnCount)) +
     material.title +
     '\n素材情境：' +
     material.situation +
@@ -427,14 +430,29 @@ export async function sendMaterialDiscussion(
     knowledgeContext;
   const apiMessages: ApiMessage[] = [
     { role: 'system', content: systemPrompt },
+    ...toApiMessages(history),
     { role: 'user', content: userMessage },
   ];
   return callLLM(apiMessages);
 }
 
-export async function sendDebateMessage(prompt: string): Promise<string> {
+export async function sendDebateMessage(prompt: string, material?: Material): Promise<string> {
+  const relevant = material ? findRelevantConcepts(material) : [];
+  const knowledgeContext = relevant.length > 0
+    ? '\n\n# 相关哲学概念（仅供你引导讨论时参考，不要直接告诉学生）\n' +
+      relevant.map(c => {
+        const quotes = c.meta.sourceQuotes.map(q => `"${q.text}"——${q.source}`).join('；');
+        return `【${c.concept}】${c.hook}\n核心张力：${c.meta.coreTension}\n引文：${quotes || '暂无'}`;
+      }).join('\n\n')
+    : '';
+
+  const systemPrompt =
+    '你是一个善于辩论的思辨教练。请用中文回应。你的目标不是赢得辩论，而是帮助学生通过辩论形式深度拆解素材。' +
+    '\n\n' + THINKING_TOOLKIT +
+    knowledgeContext;
+
   const apiMessages: ApiMessage[] = [
-    { role: 'system', content: '你是一个善于辩论的思辨教练。请用中文回应。你的目标不是赢得辩论，而是帮助学生通过辩论形式深度拆解素材。' },
+    { role: 'system', content: systemPrompt },
     { role: 'user', content: prompt },
   ];
   return callLLM(apiMessages);

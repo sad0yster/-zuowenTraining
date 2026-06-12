@@ -1,0 +1,48 @@
+.error-boundary-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--color-body);
+}
+
+.ebf-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-bg-hover);
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.error-boundary-fallback h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+  color: var(--color-heading);
+}
+
+.error-boundary-fallback p {
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+
+.ebf-retry {
+  padding: 8px 24px;
+  font-size: 14px;
+  color: #fff;
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.ebf-retry:hover {
+  opacity: 0.9;
+}

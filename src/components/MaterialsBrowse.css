@@ -39,11 +39,13 @@
   color: var(--color-primary);
   margin-bottom: 16px;
   box-sizing: border-box;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .mb-search:focus {
   outline: none;
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
 
 .mb-search::placeholder {
@@ -83,51 +85,5 @@
 .mb-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-.mb-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-bg);
-  cursor: pointer;
-  text-align: left;
-  font-family: inherit;
-  transition: border-color var(--transition-fast);
-}
-
-.mb-card:hover {
-  border-color: var(--color-accent);
-}
-
-.mb-card-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 4px;
-}
-
-.mb-card-tension {
-  font-size: 14px;
-  color: var(--color-body);
-  margin-bottom: 12px;
-}
-
-.mb-card-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.mb-tag {
-  font-size: 13px;
-  font-weight: 500;
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  background: var(--color-tag-bg);
-  color: var(--color-tag);
+  gap: 10px;
 }

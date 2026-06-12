@@ -6,7 +6,13 @@ import { Editor } from './Editor';
 import { PostWriteReview } from './PostWriteReview';
 import { saveDraft, loadDraft, clearDraft } from '../services/storageService';
 
-export function WritingDesk() {
+interface WritingDeskProps {
+  initialTopic?: string;
+  initialQuestionId?: string;
+  onExitPractice?: () => void;
+}
+
+export function WritingDesk({ initialTopic, initialQuestionId, onExitPractice }: WritingDeskProps) {
   const [step, setStep] = useState<WritingStep>('topic-input');
   const [topic, setTopic] = useState('');
   const [questionId, setQuestionId] = useState<string | null>(null);
@@ -21,8 +27,15 @@ export function WritingDesk() {
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const savedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Restore draft on mount
+  // Restore draft on mount (skip if jumping to a practice topic)
   useEffect(() => {
+    if (initialTopic) {
+      setTopic(initialTopic);
+      setQuestionId(initialQuestionId ?? null);
+      setStep('pre-write');
+      setRestored(true);
+      return;
+    }
     const draft = loadDraft();
     if (draft) {
       setStep(draft.step);
@@ -98,6 +111,7 @@ export function WritingDesk() {
   };
 
   const handleStartNew = () => {
+    onExitPractice?.();
     setStep('topic-input');
     setTopic('');
     setQuestionId(null);
@@ -123,28 +137,34 @@ export function WritingDesk() {
 
   if (step === 'pre-write') {
     return (
-      <PreWriteChat
-        topic={topic}
-        messages={preWriteMessages}
-        onMessagesUpdate={setPreWriteMessages}
-        onStartWriting={(s: string) => {
-          setPreWriteSummary(s);
-          setStep('writing');
-        }}
-      />
+      <div>
+        <button className="back-btn" onClick={handleStartNew}>← 返回选题</button>
+        <PreWriteChat
+          topic={topic}
+          messages={preWriteMessages}
+          onMessagesUpdate={setPreWriteMessages}
+          onStartWriting={(s: string) => {
+            setPreWriteSummary(s);
+            setStep('writing');
+          }}
+        />
+      </div>
     );
   }
 
   if (step === 'writing') {
     return (
-      <Editor
-        topic={topic}
-        content={content}
-        onContentChange={setContent}
-        onSubmit={() => setStep('post-write')}
-        preWriteSummary={preWriteSummary}
-        saveStatus={saveStatus}
-      />
+      <div>
+        <button className="back-btn" onClick={() => setStep('pre-write')}>← 返回构思</button>
+        <Editor
+          topic={topic}
+          content={content}
+          onContentChange={setContent}
+          onSubmit={() => setStep('post-write')}
+          preWriteSummary={preWriteSummary}
+          saveStatus={saveStatus}
+        />
+      </div>
     );
   }
 

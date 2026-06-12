@@ -172,3 +172,53 @@ function loadReadingCache(): Record<string, { materials: ReadingMaterial[]; cach
     return {};
   }
 }
+
+// Storage capacity monitoring
+export function getStorageUsage(): { used: number; total: number; percent: number } {
+  let used = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key?.startsWith('zuowen-')) {
+      used += localStorage.getItem(key)?.length || 0;
+    }
+  }
+  // localStorage limit is typically 5MB, measured in characters (2 bytes each in UTF-16)
+  const total = 5 * 1024 * 1024; // 5MB in chars
+  return { used, total, percent: Math.round((used / total) * 100) };
+}
+
+// Data export
+export function exportAllData(): string {
+  const data: Record<string, unknown> = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key?.startsWith('zuowen-')) {
+      try {
+        data[key] = JSON.parse(localStorage.getItem(key) || 'null');
+      } catch {
+        data[key] = localStorage.getItem(key);
+      }
+    }
+  }
+  return JSON.stringify(data, null, 2);
+}
+
+// Data import
+export function importAllData(jsonStr: string): { success: boolean; message: string } {
+  try {
+    const data = JSON.parse(jsonStr);
+    if (typeof data !== 'object' || data === null) {
+      return { success: false, message: '数据格式错误' };
+    }
+    let imported = 0;
+    for (const [key, value] of Object.entries(data)) {
+      if (key.startsWith('zuowen-')) {
+        localStorage.setItem(key, JSON.stringify(value));
+        imported++;
+      }
+    }
+    return { success: true, message: `成功导入 ${imported} 项数据` };
+  } catch {
+    return { success: false, message: 'JSON 解析失败，请检查文件格式' };
+  }
+}

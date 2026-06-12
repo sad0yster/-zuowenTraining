@@ -11,13 +11,14 @@
 }
 
 .empty-state h3 {
-  font-size: 15px;
-  color: #666;
+  font-size: 18px;
+  color: var(--color-body);
   margin-bottom: 6px;
+  font-weight: 600;
 }
 
 .empty-state p {
   font-size: 13px;
-  color: #999;
+  color: var(--color-muted);
   line-height: 1.5;
 }

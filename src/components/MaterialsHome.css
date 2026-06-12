@@ -6,19 +6,6 @@
   margin-bottom: 32px;
 }
 
-.mh-header h2 {
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  color: var(--color-primary);
-  margin-bottom: 4px;
-}
-
-.mh-subtitle {
-  font-size: 13px;
-  color: var(--color-body);
-}
-
 /* Today's Pick */
 .mh-today {
   background: var(--color-bg-neutral);

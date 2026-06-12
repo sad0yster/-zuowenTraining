@@ -1,16 +1,56 @@
 import { useState, useMemo } from 'react';
-import type { Material, KnowledgeConcept, ConceptTheme } from '../types';
-import materials from '../data/materials.json';
+import type { KnowledgeConcept, ConceptTheme } from '../types';
 import conceptsData from '../data/knowledge/concepts.json';
 import themesData from '../data/knowledge/themes.json';
 import './ConceptMap.css';
 
-const allMaterials = materials as Material[];
 const concepts = conceptsData as KnowledgeConcept[];
 const themes = themesData as ConceptTheme[];
 
+// SVG icon components
+const ICONS: Record<string, JSX.Element> = {
+  user: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+    </svg>
+  ),
+  clock: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  ),
+  handshake: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 17a4 4 0 0 1-4-4V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6" />
+      <path d="M15 13a4 4 0 0 1 4 4v2a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-6" />
+      <path d="M8 11h8" />
+    </svg>
+  ),
+  scale: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v18" />
+      <path d="M5 7l7-4 7 4" />
+      <path d="M5 7v3a7 7 0 0 0 3.5 6" />
+      <path d="M19 7v3a7 7 0 0 1-3.5 6" />
+    </svg>
+  ),
+  flame: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 12c0-3 2.5-6 2.5-6s2.5 3 2.5 6-2.5 6-2.5 6-2.5-3-2.5-6z" />
+      <path d="M8.5 16c0-2-1.5-4-1.5-4s-1.5 2-1.5 4 1.5 4 1.5 4 1.5-2 1.5-4z" />
+      <path d="M15.5 16c0-2 1.5-4 1.5-4s1.5 2 1.5 4-1.5 4-1.5 4-1.5-2-1.5-4z" />
+    </svg>
+  ),
+};
+
+function ThemeIcon({ icon }: { icon: string }) {
+  return <span className="cm-theme-icon">{ICONS[icon] || null}</span>;
+}
+
 interface ConceptMapProps {
-  onSelectMaterial: (material: Material) => void;
+  onSelectConcept: (conceptId: string) => void;
   onBack: () => void;
 }
 
@@ -39,7 +79,7 @@ function getThemeDepthSummary(themeConcepts: KnowledgeConcept[]) {
   return parts.length > 0 ? parts.join(' · ') : null;
 }
 
-export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
+export function ConceptMap({ onSelectConcept, onBack }: ConceptMapProps) {
   const [view, setView] = useState<'themes' | { themeId: string }>('themes');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -53,14 +93,6 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
     }
     return map;
   }, []);
-
-  // Navigate to a related concept (may be in a different theme)
-  const navigateToConcept = (conceptId: string) => {
-    const target = concepts.find(c => c.id === conceptId);
-    if (!target) return;
-    setView({ themeId: target.theme });
-    setExpandedId(conceptId);
-  };
 
   // Level 1: Theme overview
   if (view === 'themes') {
@@ -85,7 +117,9 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
                   setExpandedId(null);
                 }}
               >
-                <span className="cm-theme-icon">{theme.icon}</span>
+                <div className="cm-theme-icon-wrapper">
+                  <ThemeIcon icon={theme.icon} />
+                </div>
                 <div className="cm-theme-info">
                   <div className="cm-theme-name">{theme.name}</div>
                   <div className="cm-theme-desc">{theme.description}</div>
@@ -116,7 +150,9 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
         <p className="cm-subtitle">{currentTheme.description}</p>
       )}
       <div className="cm-list">
-        {themeConcepts.map(concept => (
+        {themeConcepts.map(concept => {
+          const depthInfo = getDepthInfo(concept.depthLevel);
+          return (
           <div key={concept.id} className="cm-concept">
             <button
               className="cm-concept-header"
@@ -127,9 +163,9 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
               <div className="cm-concept-header-text">
                 <div className="cm-concept-name-row">
                   <span className="cm-concept-name">{concept.concept}</span>
-                  {getDepthInfo(concept.depthLevel) && (
-                    <span className={`cm-depth-badge ${getDepthInfo(concept.depthLevel)!.cls}`}>
-                      {getDepthInfo(concept.depthLevel)!.label}
+                  {depthInfo && (
+                    <span className={`cm-depth-badge ${depthInfo.cls}`}>
+                      {depthInfo.label}
                     </span>
                   )}
                 </div>
@@ -138,74 +174,40 @@ export function ConceptMap({ onSelectMaterial, onBack }: ConceptMapProps) {
               <span className={`cm-chevron ${expandedId === concept.id ? 'cm-chevron--expanded' : ''}`} />
             </button>
             <div id={`detail-${concept.id}`} className={`cm-concept-detail ${expandedId === concept.id ? 'cm-concept-detail--expanded' : ''}`}>
-                <div className="cm-detail-section">
-                  <div className="cm-detail-label">分析句式</div>
-                  <div className="cm-detail-text">{concept.analysisTpl}</div>
-                </div>
-                <div className="cm-detail-section">
-                  <div className="cm-detail-label">示例</div>
-                  <div className="cm-examples">
-                    {concept.examples.map((ex, i) => (
-                      <div key={i} className="cm-example">
-                        <span className="cm-example-type">
-                          {ex.type === 'daily' ? '日常' : '论据'}
-                        </span>
-                        <span className="cm-example-text">{ex.text}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="cm-detail-section">
-                  <div className="cm-detail-label">相关素材</div>
-                  <div className="cm-related">
-                    {allMaterials
-                      .filter(m => {
-                        if (concept.relatedMaterials?.includes(m.id)) return true;
-                        const searchText = [...m.tags, m.title, m.coreTension].join(' ').toLowerCase();
-                        return concept.applicableTo?.some(a => searchText.includes(a.toLowerCase()));
-                      })
-                      .slice(0, 3)
-                      .map(m => (
-                        <button
-                          key={m.id}
-                          className="cm-related-item"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onSelectMaterial(m);
-                          }}
-                        >
-                          {m.title}
-                        </button>
-                      ))
-                    }
-                  </div>
-                </div>
-                {concept.relatedConcepts && concept.relatedConcepts.length > 0 && (
+                {concept.meta.coreTension && (
                   <div className="cm-detail-section">
-                    <div className="cm-detail-label">相关概念</div>
-                    <div className="cm-related">
-                      {concept.relatedConcepts.map(relatedId => {
-                        const related = concepts.find(c => c.id === relatedId);
-                        if (!related) return null;
-                        return (
-                          <button
-                            key={relatedId}
-                            className="cm-related-item cm-related-item--concept"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigateToConcept(relatedId);
-                            }}
-                          >
-                            {related.concept}
-                          </button>
-                        );
-                      })}
+                    <div className="cm-detail-label">核心张力</div>
+                    <div className="cm-detail-text">{concept.meta.coreTension}</div>
+                  </div>
+                )}
+                {concept.meta.sourceQuotes.length > 0 && (
+                  <div className="cm-detail-section">
+                    <div className="cm-detail-label">经典引文</div>
+                    <div className="cm-examples">
+                      {concept.meta.sourceQuotes.slice(0, 2).map((q, i) => (
+                        <div key={i} className="cm-example">
+                          <span className="cm-example-text">"{q.text}"</span>
+                          <span className="cm-example-type">{q.source}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
+                {concept.narrative && (
+                  <button
+                    className="cm-read-more"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectConcept(concept.id);
+                    }}
+                  >
+                    阅读全文 →
+                  </button>
+                )}
               </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
   align-items: center;
   gap: 2px;
   font-size: 13px;
-  color: #999;
+  color: var(--color-muted);
 }
 
 .dots span {

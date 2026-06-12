@@ -1,9 +1,11 @@
 import { useMemo } from 'react';
-import type { Material } from '../types';
+import type { Material, KnowledgeConcept } from '../types';
 import materials from '../data/materials.json';
+import conceptsData from '../data/knowledge/concepts.json';
 import './MaterialsHome.css';
 
 const allMaterials = materials as Material[];
+const allConcepts = conceptsData as KnowledgeConcept[];
 
 interface MaterialsHomeProps {
   onSelectMaterial: (material: Material) => void;
@@ -13,6 +15,11 @@ interface MaterialsHomeProps {
 }
 
 export function MaterialsHome({ onSelectMaterial, onBrowseAll, onLearningPaths, onConceptMap }: MaterialsHomeProps) {
+  // Compute stats
+  const materialCount = allMaterials.length;
+  const categoryCount = new Set(allMaterials.map(m => m.category)).size;
+  const conceptCount = allConcepts.length;
+
   // Get today's pick (rotate daily based on date)
   const todayIndex = new Date().getDate() % allMaterials.length;
   const todaysPick = allMaterials[todayIndex];
@@ -32,8 +39,8 @@ export function MaterialsHome({ onSelectMaterial, onBrowseAll, onLearningPaths, 
   return (
     <div className="materials-home">
       <div className="mh-header">
-        <h2>思辨素材</h2>
-        <p className="mh-subtitle">用真实的情境激发真实的思考</p>
+        <h2 className="page-title">思辨素材</h2>
+        <p className="page-subtitle">用真实的情境激发真实的思考</p>
       </div>
 
       {/* Today's Pick */}
@@ -71,7 +78,7 @@ export function MaterialsHome({ onSelectMaterial, onBrowseAll, onLearningPaths, 
       <div className="mh-grid">
         <button className="mh-entry" onClick={onBrowseAll}>
           <div className="mh-entry-title">全部素材</div>
-          <div className="mh-entry-desc">18个素材 · 5个分类</div>
+          <div className="mh-entry-desc">{materialCount}个素材 · {categoryCount}个分类</div>
         </button>
         <button className="mh-entry" onClick={onLearningPaths}>
           <div className="mh-entry-title">学习路径</div>
@@ -79,7 +86,7 @@ export function MaterialsHome({ onSelectMaterial, onBrowseAll, onLearningPaths, 
         </button>
         <button className="mh-entry" onClick={onConceptMap}>
           <div className="mh-entry-title">概念地图</div>
-          <div className="mh-entry-desc">15个核心概念</div>
+          <div className="mh-entry-desc">{conceptCount}个核心概念</div>
         </button>
         <button className="mh-entry" onClick={() => {
           const randomIndex = Math.floor(Math.random() * allMaterials.length);

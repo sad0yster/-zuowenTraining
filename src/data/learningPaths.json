@@ -2,25 +2,33 @@
   {
     "id": "theme-self",
     "type": "theme",
-    "name": "我与自我",
-    "description": "探索自我认知、个人价值、内心冲突",
+    "name": "自我与成长",
+    "description": "探索自我认知、标签、真实与表演",
     "materialIds": ["m1", "m2", "m3"],
     "order": 1
   },
   {
-    "id": "theme-others",
+    "id": "theme-family",
     "type": "theme",
-    "name": "我与他人",
-    "description": "理解人际关系、社会互动、道德责任",
-    "materialIds": ["m4", "m5", "m6"],
+    "name": "家庭与代际",
+    "description": "理解父母、代际差异、沟通困境",
+    "materialIds": ["m11", "m12", "m13"],
     "order": 2
+  },
+  {
+    "id": "theme-choice",
+    "type": "theme",
+    "name": "选择与价值",
+    "description": "面对取舍、代价、不确定性的思辨",
+    "materialIds": ["m37", "m38", "m39"],
+    "order": 3
   },
   {
     "id": "ability-question",
     "type": "ability",
     "name": "学会质疑",
-    "description": "培养批判性思维，不盲从权威",
-    "materialIds": ["m1", "m7", "m8"],
+    "description": "培养批判性思维，追问隐含假设",
+    "materialIds": ["m6", "m21", "m42"],
     "order": 1
   },
   {
@@ -28,7 +36,7 @@
     "type": "ability",
     "name": "多角度分析",
     "description": "从不同立场看待同一问题",
-    "materialIds": ["m2", "m9", "m10"],
+    "materialIds": ["m5", "m23", "m33"],
     "order": 2
   }
 ]

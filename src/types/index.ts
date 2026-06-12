@@ -128,18 +128,25 @@ export interface ConceptExample {
   text: string;
 }
 
+export interface ConceptMeta {
+  keyConcepts: string[];
+  philosophicalLineage: string;
+  coreTension: string;
+  relatedThemes: string[];
+  sourceQuotes: { text: string; source: string }[];
+}
+
 export interface KnowledgeConcept {
   id: string;
   concept: string;
   hook: string;
   theme: string;
   applicableTo: string[];
-  analysisTpl: string;
-  examples: ConceptExample[];
   relatedMaterials: string[];
   relatedConcepts?: string[];
   depthLevel?: number;
-  references?: string[];
+  narrative: string;
+  meta: ConceptMeta;
 }
 
 export interface ConceptTheme {

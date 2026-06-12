@@ -10,8 +10,8 @@ interface ParagraphData {
 interface AnnotatedContentProps {
   content: string;
   annotations: EssayAnnotation[];
-  activeParaIndex: number | null;
-  onParagraphClick: (paraIndex: number, annotations: EssayAnnotation[]) => void;
+  expandedParaIndex: number | null;
+  onToggleExpand: (paraIndex: number) => void;
 }
 
 function mapAnnotationsToParagraphs(
@@ -57,8 +57,8 @@ function mapAnnotationsToParagraphs(
 export function AnnotatedContent({
   content,
   annotations,
-  activeParaIndex,
-  onParagraphClick,
+  expandedParaIndex,
+  onToggleExpand,
 }: AnnotatedContentProps) {
   const paragraphData = useMemo(
     () => mapAnnotationsToParagraphs(content, annotations),
@@ -68,25 +68,25 @@ export function AnnotatedContent({
   const handleClick = useCallback(
     (index: number, anns: EssayAnnotation[]) => {
       if (anns.length > 0) {
-        onParagraphClick(index, anns);
+        onToggleExpand(index);
       }
     },
-    [onParagraphClick]
+    [onToggleExpand]
   );
 
   return (
     <div className="ann-content">
       {paragraphData.map((para, i) => {
         const hasAnn = para.annotations.length > 0;
-        const isActive = activeParaIndex === i;
+        const isExpanded = expandedParaIndex === i;
 
-        return (
+        const elements: React.ReactNode[] = [
           <p
-            key={i}
+            key={`p-${i}`}
             className={[
               'ann-paragraph',
               hasAnn && 'has-annotation',
-              isActive && 'is-active',
+              isExpanded && 'is-expanded',
             ]
               .filter(Boolean)
               .join(' ')}
@@ -94,18 +94,30 @@ export function AnnotatedContent({
             data-para-index={i}
           >
             {para.text}
-            {hasAnn && para.annotations.length === 1 && (
+            {hasAnn && (
               <span className="ann-inline-badge">
-                {para.annotations[0].label}
+                {para.annotations.length === 1
+                  ? para.annotations[0].label
+                  : `${para.annotations.length} 个得分点`}
               </span>
             )}
-            {hasAnn && para.annotations.length > 1 && (
-              <span className="ann-inline-badge">
-                {para.annotations.length} 个标注
-              </span>
-            )}
-          </p>
-        );
+          </p>,
+        ];
+
+        if (isExpanded && hasAnn) {
+          elements.push(
+            <div key={`ann-${i}`} className="ann-inline-cards">
+              {para.annotations.map((ann, j) => (
+                <div key={j} className="ann-inline-card">
+                  <span className="ann-inline-label">{ann.label}</span>
+                  <p className="ann-inline-comment">{ann.comment}</p>
+                </div>
+              ))}
+            </div>
+          );
+        }
+
+        return elements;
       })}
     </div>
   );

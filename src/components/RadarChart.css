@@ -1,0 +1,29 @@
+.radar-grid {
+  fill: none;
+  stroke: #e0e0e0;
+  stroke-width: 0.8;
+}
+
+.radar-axis {
+  stroke: #e0e0e0;
+  stroke-width: 0.5;
+}
+
+.radar-data {
+  fill: #3b82f6;
+  fill-opacity: 0.18;
+  stroke: #3b82f6;
+  stroke-width: 2;
+}
+
+.radar-dot {
+  fill: #3b82f6;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+
+.radar-label {
+  font-size: 11px;
+  fill: #555;
+  font-weight: 500;
+}

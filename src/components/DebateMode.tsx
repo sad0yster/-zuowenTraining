@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import type { Material, DebateStage, DebateSide, DebateRound } from '../types';
 import { generateId, sendDebateMessage } from '../services/aiService';
 import { DEBATE_PROMPTS } from '../prompts/debate';
-import { saveDebateRecord } from '../services/storageService';
+import { saveDebateRecord, loadDebateRecordsByMaterial, clearDebateRecord } from '../services/storageService';
 import { LoadingDots } from './LoadingDots';
 import './DebateMode.css';
 
@@ -48,6 +48,7 @@ export function DebateMode({ material, onBack }: DebateModeProps) {
   const [guideMessage, setGuideMessage] = useState<string | null>(null);
   const [showEndPrompt, setShowEndPrompt] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const restoredRef = useRef(false);
 
   const currentStage = getStageForRound(currentRound);
   const completedStages = getCompletedStages(rounds);
@@ -56,10 +57,28 @@ export function DebateMode({ material, onBack }: DebateModeProps) {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [rounds, guideMessage]);
 
-  // Auto-send opening prompt
+  // Restore saved debate on mount
   useEffect(() => {
+    if (restoredRef.current) return;
+    restoredRef.current = true;
+    const records = loadDebateRecordsByMaterial(material.id);
+    if (records.length > 0) {
+      const latest = records[records.length - 1];
+      setRounds(latest.rounds);
+      setCurrentRound(latest.rounds.length + 1);
+      if (latest.harvest) setHarvest(latest.harvest);
+      if (latest.rounds.length > 0) {
+        const lastRound = latest.rounds[latest.rounds.length - 1];
+        setPrevSide(lastRound.side);
+      }
+    }
+  }, [material.id]);
+
+  // Auto-send opening prompt (skip if restored)
+  useEffect(() => {
+    if (restoredRef.current && rounds.length > 0) return;
     const openingPrompt = DEBATE_PROMPTS.opening(material);
-    sendDebateMessage(openingPrompt).then((response) => {
+    sendDebateMessage(openingPrompt, material).then((response) => {
       setGuideMessage(response);
     });
   }, []);
@@ -94,7 +113,7 @@ export function DebateMode({ material, onBack }: DebateModeProps) {
         currentRound,
         sideSwitched,
       );
-      const response = await sendDebateMessage(prompt);
+      const response = await sendDebateMessage(prompt, material);
 
       const aiRound: DebateRound = {
         round: currentRound,
@@ -135,7 +154,7 @@ export function DebateMode({ material, onBack }: DebateModeProps) {
     setLoading(true);
     try {
       const harvestPrompt = DEBATE_PROMPTS.harvest(material, rounds);
-      const harvestText = await sendDebateMessage(harvestPrompt);
+      const harvestText = await sendDebateMessage(harvestPrompt, material);
       setHarvest(harvestText);
 
       // Save record
@@ -161,6 +180,25 @@ export function DebateMode({ material, onBack }: DebateModeProps) {
     }
   };
 
+  const handleNewDebate = () => {
+    // Clear saved records for this material
+    const records = loadDebateRecordsByMaterial(material.id);
+    records.forEach(r => clearDebateRecord(r.id));
+    // Reset state
+    setRounds([]);
+    setCurrentRound(1);
+    setHarvest(null);
+    setPrevSide(null);
+    setShowEndPrompt(false);
+    // Re-send opening
+    const openingPrompt = DEBATE_PROMPTS.opening(material);
+    sendDebateMessage(openingPrompt, material).then((response) => {
+      setGuideMessage(response);
+    });
+  };
+
+  const hasHistory = rounds.length > 0 && !harvest;
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -176,6 +214,11 @@ export function DebateMode({ material, onBack }: DebateModeProps) {
           &larr;
         </button>
         <h3 className="dm-title">{material.title}</h3>
+        {hasHistory && (
+          <button className="dm-new-debate" onClick={handleNewDebate}>
+            开始新辩论
+          </button>
+        )}
       </div>
 
       {/* Stage indicator */}

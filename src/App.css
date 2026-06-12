@@ -309,6 +309,213 @@ button:active:not(:disabled) {
   font-weight: 600;
 }
 
+/* === 统一按钮样式系统 === */
+
+/* 主要按钮 - 强调色背景 */
+.btn-primary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-deep);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  background: var(--color-disabled);
+  cursor: not-allowed;
+}
+
+/* 次要按钮 - 边框样式 */
+.btn-secondary {
+  padding: 10px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  color: var(--color-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* 文本按钮 - 无边框 */
+.btn-text {
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.btn-text:hover {
+  color: var(--color-primary);
+}
+
+/* 小按钮 */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+/* 全宽按钮 */
+.btn-full {
+  width: 100%;
+}
+
+/* === 统一表单元素样式 === */
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-primary);
+  background: var(--color-bg);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-disabled);
+}
+
+.form-textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* 表单标签 */
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-body);
+  margin-bottom: 8px;
+}
+
+/* 表单帮助文字 */
+.form-hint {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-top: 4px;
+}
+
+/* === 统一卡片样式 === */
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  transition: all var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:active {
+  transform: scale(0.99);
+}
+
+/* 卡片标题 */
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+/* 卡片描述 */
+.card-desc {
+  font-size: 13px;
+  color: var(--color-body);
+  line-height: 1.5;
+}
+
+/* 卡片标签 */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.card-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-tag-bg);
+  color: var(--color-tag);
+}
+
+/* === 统一页面标题样式 === */
+
+.page-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--color-body);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* 区域标题 */
+.section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
 .recent-essay.clickable {
   cursor: pointer;
   border: none;

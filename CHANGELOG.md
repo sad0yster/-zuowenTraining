@@ -4,6 +4,17 @@
 
 ---
 
+## 2026-05-30
+
+### feat: 素材模块重构 — 分层浏览 + 辩论模式 + 阅读材料
+- 新增素材首页（今日精选、最近学习、四宫格入口）、全部素材浏览页（分类+搜索）、学习路径、概念地图
+- 新增辩论模式（AI当对手 / 用户当裁判），集成到素材详情页
+- 新增阅读材料组件，素材详情页支持自由讨论/辩论模式切换
+- Mintlify 设计风格更新（accent 色、tag 色、圆角等）
+- 新增文件：`MaterialsHome`、`MaterialsBrowse`、`DebateMode`、`ReadingMaterials`、`LearningPaths`、`ConceptMap` 等 13 个文件
+
+---
+
 ## 2026-05-29
 
 ### feat: 素材库关键词搜索
@@ -27,15 +38,6 @@
 - 前端解析并限制在 1-5 分范围内，标记本身不在 UI 中显示
 - AI 未输出评分时回退到默认 3 分
 - 改动文件：`PostWriteReview.tsx`、`aiService.ts`、`prompts/index.ts`
-
----
-
-## 2026-05-18
-
-### docs: Mintlify 重设计规范
-- 新增产品文档设计规范文件
-
----
 
 ## 2026-05-17
 

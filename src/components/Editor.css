@@ -2,37 +2,141 @@
   display: flex;
   flex-direction: column;
   height: calc(100vh - 140px);
+  height: calc(100dvh - 140px);
 }
+
+/* === 作文题目 === */
+
+.topic-banner {
+  padding: 12px;
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+}
+
+.topic-banner-label {
+  font-size: 11px;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.topic-banner-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-primary);
+}
+
+/* === 思考地图摘要面板 === */
+
+.summary-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.summary-toggle {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: var(--color-bg-subtle);
+  font-size: 13px;
+  color: var(--color-body);
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+}
+
+.summary-toggle:hover {
+  background: var(--color-bg-neutral);
+}
+
+.summary-content {
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.summary-heading {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+  margin-top: 8px;
+}
+
+.summary-heading:first-child {
+  margin-top: 0;
+}
+
+.summary-text {
+  color: var(--color-secondary);
+  margin-bottom: 2px;
+}
+
+/* === 编辑器工具栏 === */
 
 .editor-toolbar {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
   font-size: 13px;
-  color: #999;
+  color: var(--color-muted);
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .word-warning {
-  color: #e88;
+  color: var(--color-warning);
+}
+
+.save-status {
+  font-size: 12px;
+  color: var(--color-muted);
+  animation: fadeInOut 2s ease-in-out;
+}
+
+.save-status.saving {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .editor-textarea {
   flex: 1;
   width: 100%;
   padding: 16px;
-  border: 1px solid #eee;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   font-size: 15px;
   line-height: 1.8;
   font-family: inherit;
   resize: none;
-  background: #fafafa;
+  background: var(--color-bg-hover);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
 .editor-textarea:focus {
   outline: none;
-  border-color: #1a1a1a;
-  background: #fff;
+  border-color: var(--color-accent);
+  border-width: 2px;
+  background: var(--color-bg);
 }
 
 .help-input-area {
@@ -44,18 +148,27 @@
 .help-input-area input {
   flex: 1;
   padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-sm);
   font-size: 14px;
   font-family: inherit;
+  transition: border-color var(--transition-fast);
+}
+
+.help-input-area input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  border-width: 2px;
 }
 
 .help-input-area button {
   padding: 8px 16px;
   border: none;
-  border-radius: 6px;
-  background: #1a1a1a;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-deep);
   color: #fff;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .editor-actions {
@@ -67,32 +180,38 @@
 
 .ask-coach-btn {
   padding: 10px 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+}
+
+.ask-coach-btn:hover {
+  border-color: var(--color-primary);
 }
 
 .submit-btn {
   flex: 1;
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 8px;
-  background: #1a1a1a;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
   color: #fff;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .submit-btn:disabled {
-  background: #ccc;
+  background: var(--color-disabled);
   cursor: not-allowed;
 }
 
 .coach-help-panel {
-  border: 1px solid #eee;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   margin: 8px 0;
   overflow: hidden;
   display: flex;
@@ -105,18 +224,22 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: #f9f9f9;
+  background: var(--color-bg-subtle);
   font-size: 13px;
-  color: #666;
-  border-bottom: 1px solid #eee;
+  color: var(--color-body);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .help-collapse-btn {
   border: none;
   background: none;
   font-size: 13px;
-  color: #999;
+  color: var(--color-muted);
   cursor: pointer;
+}
+
+.help-collapse-btn:hover {
+  color: var(--color-primary);
 }
 
 .help-panel-messages {
@@ -127,7 +250,7 @@
 
 .help-empty-hint {
   font-size: 13px;
-  color: #ccc;
+  color: var(--color-disabled);
   text-align: center;
   padding: 16px 0;
 }

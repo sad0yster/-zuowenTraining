@@ -1,63 +1,41 @@
-.training-page h2 {
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  margin-bottom: 4px;
-}
-
-.training-subtitle {
-  font-size: 13px;
-  color: var(--color-body);
-  margin-bottom: 24px;
+.training-page {
+  padding-bottom: 24px;
 }
 
 .drill-grid {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
-.drill-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+/* 训练单元卡片增强样式 */
+.drill-grid .card {
   padding: 24px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-bg);
-  cursor: pointer;
-  text-align: left;
 }
 
-.drill-label {
+.drill-grid .card-title {
   font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
-.drill-desc {
-  font-size: 13px;
-  color: var(--color-body);
+.drill-grid .card-desc {
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-.recent-section h3 {
-  font-size: 11px;
-  color: var(--color-body);
-  margin-bottom: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.recent-section {
+  margin-top: 40px;
 }
 
 .recent-item {
   display: flex;
   gap: 12px;
-  padding: 8px 0;
+  padding: 14px 0;
   border: none;
-  border-bottom: 1px solid var(--color-bg-neutral);
+  border-bottom: 1px solid var(--color-border);
   background: none;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
   text-align: left;
   width: 100%;
@@ -70,20 +48,21 @@
 }
 
 .recent-type {
-  color: var(--color-primary);
+  color: var(--color-accent);
   font-weight: 600;
   flex-shrink: 0;
+  min-width: 60px;
 }
 
 .recent-topic {
   color: var(--color-body);
+  flex: 1;
 }
 
 /* 训练详情页 */
 
-.tp-detail {
-  display: flex;
-  flex-direction: column;
+.record-detail {
+  padding-bottom: 24px;
 }
 
 .tp-detail-back {
@@ -103,55 +82,16 @@
   color: var(--color-primary);
 }
 
-.tp-detail h3 {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  margin-bottom: 12px;
-}
-
-.tp-detail-section {
-  margin-bottom: 20px;
-}
-
-.tp-detail-section h4 {
-  font-size: 13px;
-  color: var(--color-muted);
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.tp-detail-section p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--color-secondary);
-}
-
-.tp-essay-lib-btn {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 32px;
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-bg);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-body);
-  cursor: pointer;
-}
-
-.tp-essay-lib-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
 .tp-detail-label {
-  font-size: 13px;
-  color: var(--color-muted);
-  margin-bottom: 8px;
+  font-size: 12px;
   font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  margin-top: 20px;
 }
 
-.tp-detail-label--offset {
-  margin-top: 16px;
+.tp-detail-label:first-of-type {
+  margin-top: 0;
 }

@@ -6,21 +6,23 @@
   padding: 2px 0 2px 12px;
   border-left: 3px solid transparent;
   cursor: default;
-  transition: background var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .ann-paragraph.has-annotation {
   cursor: pointer;
-  background: var(--color-accent-soft);
-  border-left-color: var(--color-accent);
+  border-left-color: var(--color-border);
+  background: transparent;
 }
 
 .ann-paragraph.has-annotation:hover {
-  background: rgba(0, 212, 164, 0.18);
+  border-left-color: var(--color-muted);
+  background: var(--color-bg-subtle);
 }
 
-.ann-paragraph.is-active {
-  background: rgba(0, 212, 164, 0.22);
+.ann-paragraph.is-expanded {
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-soft);
 }
 
 .ann-paragraph.is-flashing {
@@ -28,8 +30,8 @@
 }
 
 @keyframes annPulse {
-  0% { background: rgba(0, 212, 164, 0.35); }
-  100% { background: rgba(0, 212, 164, 0.22); }
+  0% { background: rgba(0, 212, 164, 0.25); }
+  100% { background: var(--color-accent-soft); }
 }
 
 .ann-inline-badge {
@@ -42,4 +44,36 @@
   background: var(--color-tag-bg);
   color: var(--color-tag);
   vertical-align: middle;
+}
+
+/* Inline annotation cards */
+.ann-inline-cards {
+  margin: 4px 0 12px;
+  padding-left: 4px;
+}
+
+.ann-inline-card {
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--color-bg-subtle);
+}
+
+.ann-inline-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+.ann-inline-comment {
+  font-size: 13px;
+  color: var(--color-secondary);
+  line-height: 1.6;
+  margin: 0;
 }

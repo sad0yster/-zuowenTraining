@@ -3,6 +3,7 @@ import type { ChatMessage } from '../types';
 import { sendInWriteHelp, generateId } from '../services/aiService';
 import { ChatBubble } from './ChatBubble';
 import { LoadingDots } from './LoadingDots';
+import { Collapse } from './Collapse';
 import './Editor.css';
 
 interface EditorProps {
@@ -10,11 +11,14 @@ interface EditorProps {
   content: string;
   onContentChange: (content: string) => void;
   onSubmit: () => void;
+  preWriteSummary?: string;
+  saveStatus?: 'saved' | 'saving' | '';
 }
 
-export function Editor({ topic, content, onContentChange, onSubmit }: EditorProps) {
+export function Editor({ topic, content, onContentChange, onSubmit, preWriteSummary, saveStatus }: EditorProps) {
   const [wordCount, setWordCount] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
+  const [showSummary, setShowSummary] = useState(true);
   const [helpInput, setHelpInput] = useState('');
   const [helpMessages, setHelpMessages] = useState<ChatMessage[]>([]);
   const [helpLoading, setHelpLoading] = useState(false);
@@ -77,11 +81,43 @@ export function Editor({ topic, content, onContentChange, onSubmit }: EditorProp
 
   return (
     <div className="editor">
+      <div className="topic-banner">
+        <span className="topic-banner-label">作文题目</span>
+        <p className="topic-banner-text">{topic}</p>
+      </div>
+
+      {preWriteSummary && (
+        <div className="summary-panel">
+          <button
+            className="summary-toggle"
+            onClick={() => setShowSummary(!showSummary)}
+          >
+            {showSummary ? '收起思考地图 ▲' : '展开思考地图 ▼'}
+          </button>
+          <Collapse isOpen={showSummary}>
+            <div className="summary-content">
+              {preWriteSummary.split('\n').map((line, i) => (
+                <p key={i} className={line.startsWith('【') ? 'summary-heading' : 'summary-text'}>
+                  {line}
+                </p>
+              ))}
+            </div>
+          </Collapse>
+        </div>
+      )}
+
       <div className="editor-toolbar">
         <span className="word-count">{wordCount} 字</span>
-        {wordCount > 0 && wordCount < 700 && (
-          <span className="word-warning">建议 800 字以上</span>
-        )}
+        <div className="toolbar-right">
+          {wordCount > 0 && wordCount < 700 && (
+            <span className="word-warning">建议 800 字以上</span>
+          )}
+          {saveStatus && (
+            <span className={`save-status ${saveStatus}`}>
+              {saveStatus === 'saving' ? '保存中...' : '✓ 已保存'}
+            </span>
+          )}
+        </div>
       </div>
 
       <textarea
@@ -93,7 +129,7 @@ export function Editor({ topic, content, onContentChange, onSubmit }: EditorProp
         autoFocus
       />
 
-      {showHelp && (
+      <Collapse isOpen={showHelp}>
         <div className="coach-help-panel">
           <div className="help-panel-header">
             <span>向教练提问</span>
@@ -101,7 +137,7 @@ export function Editor({ topic, content, onContentChange, onSubmit }: EditorProp
               收起
             </button>
           </div>
-          <div className="help-panel-messages">
+          <div className="help-panel-messages" role="log" aria-live="polite" aria-label="对话记录">
             {helpMessages.length === 0 && (
               <p className="help-empty-hint">写作中遇到困惑？随时向教练提问</p>
             )}
@@ -128,7 +164,7 @@ export function Editor({ topic, content, onContentChange, onSubmit }: EditorProp
             </button>
           </div>
         </div>
-      )}
+      </Collapse>
 
       <div className="editor-actions">
         <button

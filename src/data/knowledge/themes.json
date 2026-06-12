@@ -1,0 +1,32 @@
+[
+  {
+    "id": "self-identity",
+    "name": "自我与身份",
+    "description": "我是谁？标签、定义与真实的自我",
+    "icon": "user"
+  },
+  {
+    "id": "time-life",
+    "name": "时间与生命",
+    "description": "时间的本质、记忆的力量与生命的冲动",
+    "icon": "clock"
+  },
+  {
+    "id": "ethics-relation",
+    "name": "伦理与关系",
+    "description": "道德、责任与他者的关系",
+    "icon": "handshake"
+  },
+  {
+    "id": "reason-sense",
+    "name": "理性与感性",
+    "description": "秩序与激情、身体与心灵的平衡",
+    "icon": "scale"
+  },
+  {
+    "id": "desire-drive",
+    "name": "欲望与动力",
+    "description": "欲望的本质与生命的创造力量",
+    "icon": "flame"
+  }
+]

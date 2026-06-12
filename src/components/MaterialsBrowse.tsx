@@ -6,11 +6,17 @@ import './MaterialsBrowse.css';
 const allMaterials = materials as Material[];
 
 const CATEGORIES: { key: MaterialCategory; label: string }[] = [
-  { key: 'self-and-self', label: '我与自我' },
-  { key: 'self-and-others', label: '我与他人' },
-  { key: 'self-and-world', label: '我与世界' },
-  { key: 'self-and-era', label: '我与时代' },
-  { key: 'self-and-tradition', label: '我与传统' },
+  { key: 'self-growth', label: '自我与成长' },
+  { key: 'learning', label: '学习与教育' },
+  { key: 'family', label: '家庭与代际' },
+  { key: 'social', label: '友谊与社交' },
+  { key: 'society', label: '社会与制度' },
+  { key: 'tradition', label: '传统与文化' },
+  { key: 'technology', label: '技术与人性' },
+  { key: 'choice', label: '选择与价值' },
+  { key: 'ethics', label: '道德与伦理' },
+  { key: 'existence', label: '时间与存在' },
+  { key: 'deep-water', label: '思辨深水区' },
 ];
 
 interface MaterialsBrowseProps {
@@ -75,19 +81,19 @@ export function MaterialsBrowse({ onSelectMaterial, onBack }: MaterialsBrowsePro
 
       <div className="mb-list">
         {filtered.map((m) => (
-          <button
+          <div
             key={m.id}
-            className="mb-card"
+            className="card card-clickable"
             onClick={() => onSelectMaterial(m)}
           >
-            <div className="mb-card-title">{m.title}</div>
-            <div className="mb-card-tension">{m.coreTension}</div>
-            <div className="mb-card-tags">
+            <div className="card-title">{m.title}</div>
+            <div className="card-desc">{m.coreTension}</div>
+            <div className="card-tags">
               {m.tags.map(tag => (
-                <span key={tag} className="mb-tag">{tag}</span>
+                <span key={tag} className="card-tag">{tag}</span>
               ))}
             </div>
-          </button>
+          </div>
         ))}
       </div>
     </div>

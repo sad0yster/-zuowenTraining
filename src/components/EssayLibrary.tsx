@@ -1,7 +1,6 @@
-import { useState, useMemo, useCallback, useRef } from 'react';
-import type { ModelEssay, EssayCategory, EssayAnnotation } from '../types';
+import { useState, useMemo, useCallback } from 'react';
+import type { ModelEssay, EssayCategory } from '../types';
 import { AnnotatedContent } from './AnnotatedContent';
-import { AnnotationSidebar } from './AnnotationSidebar';
 import essays from '../data/essays.json';
 import './EssayLibrary.css';
 
@@ -30,11 +29,7 @@ export function EssayLibrary({ onPractice }: EssayLibraryProps) {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<EssayCategory | null>(null);
   const [activeTechnique, setActiveTechnique] = useState<string | null>(null);
-  const [activeParaIndex, setActiveParaIndex] = useState<number | null>(null);
-  const [activeAnnotations, setActiveAnnotations] = useState<EssayAnnotation[]>([]);
-  const [highlightedAnnIndex, setHighlightedAnnIndex] = useState<number | null>(null);
-  const [showSheet, setShowSheet] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const [expandedParaIndex, setExpandedParaIndex] = useState<number | null>(null);
 
   // Available techniques for current category filter
   const availableTechniques = useMemo(() => {
@@ -68,39 +63,8 @@ export function EssayLibrary({ onPractice }: EssayLibraryProps) {
     return list;
   }, [search, activeCategory, activeTechnique]);
 
-  // Annotation interaction handlers
-  const handleParagraphClick = useCallback((paraIndex: number, anns: EssayAnnotation[]) => {
-    setActiveParaIndex(paraIndex);
-    setActiveAnnotations(anns);
-    setHighlightedAnnIndex(0);
-    setShowSheet(true);
-  }, []);
-
-  const handleAnnotationClick = useCallback((annotation: EssayAnnotation) => {
-    if (!contentRef.current || !selected) return;
-    const paragraphs = contentRef.current.querySelectorAll('.ann-paragraph');
-    const paraCount = selected.content.split('\n').filter(p => p.trim()).length;
-    const maxEnd = Math.max(...selected.annotations.map(a => a.endIndex), 0);
-    const isParagraphIndex = maxEnd <= paraCount;
-
-    let targetPara: number;
-    if (isParagraphIndex) {
-      targetPara = annotation.startIndex;
-    } else {
-      targetPara = Math.floor((annotation.startIndex / selected.content.length) * paraCount);
-    }
-
-    const el = paragraphs[targetPara];
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      el.classList.add('is-flashing');
-      setTimeout(() => el.classList.remove('is-flashing'), 600);
-    }
-    setShowSheet(false);
-  }, [selected]);
-
-  const handleSheetClose = useCallback(() => {
-    setShowSheet(false);
+  const handleToggleExpand = useCallback((paraIndex: number) => {
+    setExpandedParaIndex(prev => prev === paraIndex ? null : paraIndex);
   }, []);
 
   const handleTechniqueTagClick = useCallback((tech: string) => {
@@ -114,8 +78,7 @@ export function EssayLibrary({ onPractice }: EssayLibraryProps) {
         <div className="ed-top-bar">
           <button className="ed-back" onClick={() => {
             setSelected(null);
-            setActiveParaIndex(null);
-            setActiveAnnotations([]);
+            setExpandedParaIndex(null);
           }}>
             ←
           </button>
@@ -128,31 +91,21 @@ export function EssayLibrary({ onPractice }: EssayLibraryProps) {
           </button>
         </div>
 
-        <div className="ed-layout" ref={contentRef}>
-          <div className="ed-main">
-            <p className="ed-topic">题目：{selected.topic}</p>
-            <AnnotatedContent
-              content={selected.content}
-              annotations={selected.annotations}
-              activeParaIndex={activeParaIndex}
-              onParagraphClick={handleParagraphClick}
-            />
-            {selected.techniques.length > 0 && (
-              <div className="ed-techniques">
-                {selected.techniques.map(t => (
-                  <span key={t} className="card-tag">{t}</span>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <AnnotationSidebar
-            annotations={activeAnnotations}
-            highlightedIndex={highlightedAnnIndex}
-            onAnnotationClick={handleAnnotationClick}
-            showSheet={showSheet}
-            onSheetClose={handleSheetClose}
+        <div className="ed-content">
+          <p className="ed-topic">题目：{selected.topic}</p>
+          <AnnotatedContent
+            content={selected.content}
+            annotations={selected.annotations}
+            expandedParaIndex={expandedParaIndex}
+            onToggleExpand={handleToggleExpand}
           />
+          {selected.techniques.length > 0 && (
+            <div className="ed-techniques">
+              {selected.techniques.map(t => (
+                <span key={t} className="card-tag">{t}</span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );

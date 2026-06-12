@@ -95,6 +95,11 @@ export function PreWriteChat({
   };
 
   const handleStartWriting = async () => {
+    const hasDiscussion = messages.some(m => m.role === 'user');
+    if (!hasDiscussion) {
+      onStartWriting('');
+      return;
+    }
     setSummaryLoading(true);
     try {
       const summary = await sendPreWriteSummary(topic, messages);

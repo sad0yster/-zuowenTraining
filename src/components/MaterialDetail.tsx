@@ -1,19 +1,23 @@
 import { useState, useRef, useEffect } from 'react';
-import type { Material, ChatMessage, KnowledgeConcept } from '../types';
+import type { Material, ChatMessage, KnowledgeConcept, DrillType } from '../types';
 import { generateId, sendMaterialDiscussion } from '../services/aiService';
 import { saveMaterialDiscussion, loadMaterialDiscussion, clearMaterialDiscussion } from '../services/storageService';
 import { ChatBubble, renderInlineMarkdown } from './ChatBubble';
 import { LoadingDots } from './LoadingDots';
 import { Collapse } from './Collapse';
 import conceptsData from '../data/knowledge/concepts.json';
+import materialsData from '../data/materials.json';
 import { DebateMode } from './DebateMode';
 import { ReadingMaterials } from './ReadingMaterials';
 
 const concepts: KnowledgeConcept[] = conceptsData as KnowledgeConcept[];
+const allMaterials = materialsData as Material[];
 
 interface MaterialDetailProps {
   material: Material;
   onBack: () => void;
+  onNavigateToTraining?: (drillType: DrillType) => void;
+  onSelectMaterial?: (material: Material) => void;
 }
 
 function parseHarvest(text: string): string | null {
@@ -39,6 +43,8 @@ function stripConceptMarker(harvest: string): string {
 export function MaterialDetail({
   material,
   onBack,
+  onNavigateToTraining,
+  onSelectMaterial,
 }: MaterialDetailProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
@@ -52,6 +58,7 @@ export function MaterialDetail({
   const bottomRef = useRef<HTMLDivElement>(null);
   const sentFirstRef = useRef(false);
   const restoredRef = useRef(false);
+  const userSentRef = useRef(false);
 
   // Restore saved discussion on mount
   useEffect(() => {
@@ -61,6 +68,9 @@ export function MaterialDetail({
     if (saved && saved.messages.length > 0) {
       setMessages(saved.messages);
       setHasHistory(true);
+      if (saved.messages.some(m => m.role === 'user')) {
+        userSentRef.current = true;
+      }
       if (saved.harvest) {
         setHarvest(saved.harvest);
       }
@@ -82,7 +92,9 @@ export function MaterialDetail({
   }, []);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (userSentRef.current) {
+      bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   // Save discussion on unmount
@@ -117,12 +129,14 @@ export function MaterialDetail({
       content: trimmed,
       timestamp: Date.now(),
     };
+    userSentRef.current = true;
     setMessages((prev) => [...prev, userMsg]);
     setInput('');
     setLoading(true);
 
     try {
-      const reply = await sendMaterialDiscussion(material, trimmed);
+      const turnCount = messages.filter(m => m.role === 'user').length + 1;
+      const reply = await sendMaterialDiscussion(material, trimmed, messages, turnCount);
       const h = parseHarvest(reply);
       if (h) {
         const conceptId = parseConceptId(h);
@@ -170,6 +184,7 @@ export function MaterialDetail({
     setHasHistory(false);
     setShowConcept(false);
     setShowHarvest(true);
+    userSentRef.current = false;
     sentFirstRef.current = false;
     const firstQ = material.guideQuestions[0];
     if (firstQ) {
@@ -187,8 +202,22 @@ export function MaterialDetail({
         <h3>{material.title}</h3>
       </div>
 
-      <div className="md-situation">{material.situation}</div>
+      <div className="md-situation">
+        {material.situation}
+      </div>
       <div className="md-tension">{material.coreTension}</div>
+      {material.essayAngle && (
+        <div className="md-essay-angle">
+          <div className="md-essay-angle-label">立意切口</div>
+          <div className="md-essay-angle-text">{material.essayAngle}</div>
+        </div>
+      )}
+      {material.thinkingReef && (
+        <div className="md-thinking-reef">
+          <div className="md-thinking-reef-label">思辨暗礁</div>
+          <div className="md-thinking-reef-text">{material.thinkingReef}</div>
+        </div>
+      )}
 
       {hasHistory && (
         <button className="md-new-chat" onClick={handleNewChat}>
@@ -218,7 +247,7 @@ export function MaterialDetail({
       {debateMode ? (
         <DebateMode material={material} onBack={() => setDebateMode(false)} />
       ) : (
-        <div className="md-chat-area">
+        <div className="md-chat-window">
           <div className="md-discussion" role="log" aria-live="polite" aria-label="对话记录">
             {messages.map((msg) => (
               <ChatBubble key={msg.id} message={msg} />
@@ -227,29 +256,31 @@ export function MaterialDetail({
             <div ref={bottomRef} />
           </div>
 
-          {!harvest ? (
-            <>
-              <div className="md-input-row">
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="说说你的想法..."
-                  disabled={loading}
-                />
-                <button
-                  onClick={handleSend}
-                  disabled={loading || !input.trim()}
-                >
-                  发送
-                </button>
-              </div>
-              <div className="md-harvest-hint">当教练认为讨论到位时，会自动产出收获卡</div>
-            </>
-          ) : (
-            <div className="md-done-hint">讨论结束，收获如下 ↓</div>
-          )}
+          <div className="md-input-area">
+            {!harvest ? (
+              <>
+                <div className="md-input-row">
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    placeholder="说说你的想法..."
+                    disabled={loading}
+                  />
+                  <button
+                    onClick={handleSend}
+                    disabled={loading || !input.trim()}
+                  >
+                    发送
+                  </button>
+                </div>
+                <div className="md-harvest-hint">当教练认为讨论到位时，会自动产出收获卡</div>
+              </>
+            ) : (
+              <div className="md-done-hint">讨论结束，收获如下 ↓</div>
+            )}
+          </div>
         </div>
       )}
 
@@ -258,6 +289,7 @@ export function MaterialDetail({
           <button
             className="harvest-toggle"
             onClick={() => setShowHarvest(!showHarvest)}
+            aria-expanded={showHarvest}
           >
             {showHarvest ? '收起收获 ▲' : '展开收获 ▼'}
           </button>
@@ -275,33 +307,89 @@ export function MaterialDetail({
         </div>
       )}
 
+      {harvest && material.linkedDrills && material.linkedDrills.length > 0 && (
+        <div className="md-recommended-drills">
+          <div className="md-mode-label">推荐训练</div>
+          <div className="md-mode-buttons">
+            {material.linkedDrills.map((drillType) => {
+              const labelMap: Record<DrillType, string> = {
+                'deep-analysis': '深度审题',
+                'argument': '论证打磨',
+                'perspective': '视角突破',
+              };
+              return (
+                <button
+                  key={drillType}
+                  className="md-drill-btn"
+                  onClick={() => onNavigateToTraining?.(drillType)}
+                >
+                  {labelMap[drillType]}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {linkedConcept && (
         <div className="concept-card">
           <button
             className="concept-toggle"
             onClick={() => setShowConcept(!showConcept)}
+            aria-expanded={showConcept}
           >
-            {showConcept ? '收起概念 ▲' : `延伸阅读：${linkedConcept.concept} ▼`}
+            {showConcept ? '收起概念 ▲' : `概念延伸：${linkedConcept.concept} ▼`}
           </button>
           <Collapse isOpen={showConcept}>
             <div className="concept-content">
               <p className="concept-hook">{linkedConcept.hook}</p>
-              <p className="concept-section-label">分析句式</p>
-              <p className="concept-tpl">{linkedConcept.analysisTpl}</p>
-              {linkedConcept.examples.map((ex, i) => (
-                <div key={i} className="concept-example">
-                  <span className="concept-example-type">
-                    {ex.type === 'daily' ? '日常' : '论据'}
-                  </span>
-                  <span className="concept-example-text">{ex.text}</span>
-                </div>
-              ))}
+              {linkedConcept.narrative && (
+                <>
+                  <p className="concept-section-label">深度叙事</p>
+                  <p className="concept-tpl">{linkedConcept.narrative.substring(0, 200)}{linkedConcept.narrative.length > 200 ? '……' : ''}</p>
+                </>
+              )}
+              {linkedConcept.meta.sourceQuotes.length > 0 && (
+                <>
+                  <p className="concept-section-label">经典引文</p>
+                  {linkedConcept.meta.sourceQuotes.map((q, i) => (
+                    <div key={i} className="concept-example">
+                      <span className="concept-example-text">"{q.text}"</span>
+                      <span className="concept-example-type">{q.source}</span>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           </Collapse>
         </div>
       )}
 
-      {!debateMode && <ReadingMaterials materialId={material.id} />}
+      {!debateMode && <ReadingMaterials materialId={material.id} onSelectMaterial={onSelectMaterial} />}
+
+      {/* Cross-linking between layers */}
+      {material.relatedMaterialIds && material.relatedMaterialIds.length > 0 && onSelectMaterial && (
+        <div className="md-related-materials">
+          <div className="md-related-label">
+            {material.category === 'deep-water' ? '从这里出发' : '想更深？'}
+          </div>
+          <div className="md-related-list">
+            {material.relatedMaterialIds.map(id => {
+              const related = allMaterials.find(m => m.id === id);
+              if (!related) return null;
+              return (
+                <button
+                  key={id}
+                  className="md-related-item"
+                  onClick={() => onSelectMaterial(related)}
+                >
+                  {related.title}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
