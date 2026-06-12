@@ -59,6 +59,7 @@ export function MaterialDetail({
   const sentFirstRef = useRef(false);
   const restoredRef = useRef(false);
   const userSentRef = useRef(false);
+  const skipScrollRef = useRef(false);
 
   // Restore saved discussion on mount
   useEffect(() => {
@@ -66,6 +67,7 @@ export function MaterialDetail({
     restoredRef.current = true;
     const saved = loadMaterialDiscussion(material.id);
     if (saved && saved.messages.length > 0) {
+      skipScrollRef.current = true; // 恢复历史时不触发滚动
       setMessages(saved.messages);
       setHasHistory(true);
       if (saved.messages.some(m => m.role === 'user')) {
@@ -92,6 +94,10 @@ export function MaterialDetail({
   }, []);
 
   useEffect(() => {
+    if (skipScrollRef.current) {
+      skipScrollRef.current = false;
+      return;
+    }
     if (userSentRef.current) {
       bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
